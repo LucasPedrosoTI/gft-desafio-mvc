@@ -19,7 +19,7 @@ VALUES (
     "Barueri",
     "Alameda Rio Negro, n° 585 Ed. Padauiri, 10° andar",
     "SP",
-    "GFT Alphaville",
+    "GFT_ALPHAVILLE",
     "1121763253"
   ),
   (
@@ -28,7 +28,7 @@ VALUES (
     "Rebouças",
     "Av. Sete de Setembro, 2451 Torre Trinity Corporate 6º andar",
     "PR",
-    "GFT Curitiba",
+    "GFT_SOROCABA",
     "4140095700"
   ),
   (
@@ -37,7 +37,7 @@ VALUES (
     "Jardim Sta. Rosália",
     "Av. São Francisco, 98",
     "SP",
-    "GFT Sorocaba",
+    "GFT_CURITIBA",
     "1121763553"
   );
 INSERT INTO vaga (
@@ -52,7 +52,7 @@ VALUES (
     1,
     "GFTALP1",
     "2020-11-04",
-    "Desenvolvedor Back End Java",
+    "DESENVOLVEDOR BACK END JAVA",
     "Banco Original",
     2
   );
@@ -69,7 +69,7 @@ INSERT INTO funcionario (
 VALUES (
     1,
     "João",
-    "Desenvolvedor Back End",
+    "DESENVOLVEDOR_BACK",
     "0123456",
     "2020-11-04",
     "2020-11-19",

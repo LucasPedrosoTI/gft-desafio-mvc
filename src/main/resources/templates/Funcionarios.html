@@ -12,5 +12,39 @@
 
   <section layout:fragment="conteudo">
     <h1>Funcionários</h1>
+
+    <table class="table table-bordered table-striped table-responsive">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Cargo</th>
+          <th>Tecnologias</th>
+          <th>Inicio WA</th>
+          <th>Previsão término WA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="funcionario : ${funcionarios}">
+          <td th:text="${funcionario.nome}"></td>
+
+          <td th:text="${funcionario.cargo}"></td>
+
+          <td>
+            <p th:each="tecnologia : ${funcionarios.tecnologias}">
+              <span th:text="${tecnologia.nome}"></span>
+            </p>
+          </td>
+
+          <td th:text="${{funcionario.inicioWa}}"></td>
+
+          <td th:text="${{funcionario.terminoWa}}"></td>
+        </tr>
+        <tr>
+          <td colspan="5" th:if="${#lists.isEmpty(funcionarios)}">
+            Nenhum funcionário foi encontrado
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 </html>
