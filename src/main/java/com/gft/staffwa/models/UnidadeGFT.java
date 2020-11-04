@@ -47,7 +47,7 @@ public class UnidadeGFT {
   @NotBlank(message = "Telefone é obrigatório")
   private String telefone;
 
-  @OneToMany(mappedBy = "unidades_gft")
+  @OneToMany(mappedBy = "alocacao")
   private List<Funcionario> funcionarios;
 
 }

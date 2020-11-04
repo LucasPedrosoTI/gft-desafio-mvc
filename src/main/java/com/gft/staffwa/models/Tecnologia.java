@@ -26,9 +26,9 @@ public class Tecnologia {
   @NotBlank(message = "Nome é obrigatório")
   private String nome;
 
-  @ManyToMany(mappedBy = "tecnologia")
+  @ManyToMany(mappedBy = "tecnologias")
   private List<Vaga> vagas;
 
-  @ManyToMany(mappedBy = "tecnologia")
+  @ManyToMany(mappedBy = "tecnologias")
   private List<Funcionario> funcionarios;
 }

@@ -49,9 +49,9 @@ public class Vaga {
 
   @ManyToMany
   @JoinTable(name = "vaga_tecnologia", joinColumns = @JoinColumn(name = "vaga_id"), inverseJoinColumns = @JoinColumn(name = "tecnologia_id"))
-  private List<Tecnologia> tecnologia;
+  private List<Tecnologia> tecnologias;
 
-  @OneToMany(mappedBy = "vaga")
+  @OneToMany(mappedBy = "alocacao")
   private List<Funcionario> funcionarios;
 
 }
