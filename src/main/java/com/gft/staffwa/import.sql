@@ -1,1 +1,0 @@
-INSERT INTO tecnologia (id, nome) values (1, "Java");
