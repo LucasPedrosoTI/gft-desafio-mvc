@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html
+  lang="pt-BR"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{LayoutPadrao}"
+>
+  <head>
+    <title>Funcionários</title>
+  </head>
+
+  <section layout:fragment="conteudo">
+    <h1 class="text-center my-3">Cadastro de Funcionário</h1>
+
+    <form action="" method="POST" th:object="${funcionario}">
+      <div th:replace="MensagemErro"></div>
+
+      <input type="hidden" th:field="*{id}" />
+      <div class="form-group">
+        <label for="matricula">Matrícula</label>
+        <input
+          th:field="*{matricula}"
+          type="text"
+          class="form-control"
+          id="matricula"
+        />
+      </div>
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input th:field="*{nome}" type="text" class="form-control" id="nome" />
+      </div>
+      <div class="form-group">
+        <label for="cargo">Cargo</label>
+        <select th:field="*{cargo}" class="form-control" id="cargo">
+          <option
+            th:each="cargo : ${cargos}"
+            th:value="${cargo}"
+            th:text="${cargo.descricao}"
+          ></option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="localDeTrabalho">Local De Trabalho</label>
+        <select
+          th:field="*{localDeTrabalho.nomeUnidade}"
+          class="form-control"
+          id="localDeTrabalho"
+        >
+          <option
+            th:each="localDeTrabalho : ${locais}"
+            th:value="${localDeTrabalho}"
+            th:text="${localDeTrabalho.descricao}"
+          ></option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="tecnologias">Tecnologias</label>
+        <select
+          th:field="*{tecnologias}"
+          class="form-control"
+          id="tecnologias"
+          multiple
+          size="5"
+        >
+          <option
+            th:each="tecnologia : ${tecnologias}"
+            th:field="*{tecnologia.nome}"
+            th:value="${tecnologia}"
+            th:text="${tecnologia.descricao}"
+          ></option>
+        </select>
+      </div>
+      <div class="d-flex">
+        <button class="btn btn-primary mx-auto mb-5" type="submit">
+          Cadastrar
+        </button>
+      </div>
+    </form>
+  </section>
+</html>

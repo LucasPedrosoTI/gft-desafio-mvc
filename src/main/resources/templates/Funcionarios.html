@@ -64,18 +64,18 @@
           <td th:text="${funcionario.cargo.descricao}"></td>
 
           <td class="row">
-            <strong th:if="${#lists.isEmpty(funcionario.tecnologias)}"
+            <!-- <strong th:if="${#lists.isEmpty(funcionario.tecnologias)}"
               >Nenhuma tecnologia cadastrada</strong
-            >
+            > -->
             <span
               class="col-6 mb-2"
               th:each="tecnologia : ${funcionario.tecnologias}"
             >
               <i
-                th:classappend="|fa-${#strings.toLowerCase(tecnologia.nome)}|"
+                th:classappend="|fa-${#strings.toLowerCase(tecnologia.nome.descricao)}|"
                 class="fab"
               ></i>
-              <span th:text="${tecnologia.nome}"></span>
+              <span th:text="${tecnologia.nome.descricao}"></span>
             </span>
           </td>
 
@@ -90,5 +90,10 @@
         </tr>
       </tbody>
     </table>
+    <div class="d-flex">
+      <a href="/wa/funcionarios/cadastrar" class="mx-auto btn btn-primary"
+        >Cadastrar Funcionário</a
+      >
+    </div>
   </section>
 </html>

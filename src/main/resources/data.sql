@@ -1,9 +1,9 @@
 INSERT INTO tecnologia (id, nome)
-values (1, "Java"),
-  (2, ".Net"),
-  (3, "Database"),
-  (4, "HTML5"),
-  (5, "CSS3");
+VALUES (1, "JAVA"),
+  (2, "JAVASCRIPT"),
+  (3, "SQL"),
+  (4, "HTML"),
+  (5, "CSS");
 INSERT INTO unidades_gft (
     id,
     cep,
@@ -56,6 +56,9 @@ VALUES (
     "Banco Original",
     2
   );
+INSERT INTO vaga_tecnologia (vaga_id, tecnologia_id)
+VALUES (1, 1),
+  (1, 3);
 INSERT INTO funcionario (
     id,
     nome,
@@ -75,13 +78,21 @@ VALUES (
     "2020-11-19",
     1,
     1
-  ),(2, 'DESENVOLVEDOR_FRONT', '2020-11-05', '0234567', 'José dos Santos', '2020-11-20', 1, 2);
-
-INSERT INTO vaga_tecnologia (vaga_id, tecnologia_id)
-VALUES (1, 1),
-  (1, 3);
+  ),
+  (
+    2,
+    "José",
+    "DESENVOLVEDOR_BACK",
+    "0123456",
+    "2020-11-04",
+    "2020-11-19",
+    1,
+    1
+  );
 INSERT INTO funcionario_tecnologia (funcionario_id, tecnologia_id)
 VALUES (1, 1),
   (1, 3),
   (1, 4),
-  (2,1),(2,4),(2,5);
+  (2, 1),
+  (2, 4),
+  (2, 5);

@@ -3,6 +3,8 @@ package com.gft.staffwa.models;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +26,8 @@ public class Tecnologia {
   private Long id;
 
   @NotBlank(message = "Nome é obrigatório")
-  private String nome;
+  @Enumerated(EnumType.STRING)
+  private EnumCargo nome;
 
   @ManyToMany(mappedBy = "tecnologias")
   private List<Vaga> vagas;

@@ -34,14 +34,14 @@ public class Funcionario {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @NotBlank(message = "Matricula é obrigatório")
+  private String matricula;
+
   @NotBlank(message = "Nome é obrigatório")
   private String nome;
 
   @Enumerated(EnumType.STRING)
-  private CargoEnum cargo;
-
-  @NotBlank(message = "Matricula é obrigatório")
-  private String matricula;
+  private EnumCargo cargo;
 
   @NotNull(message = "Data de início é obrigatório")
   @DateTimeFormat(pattern = "dd/MM/yyyy")

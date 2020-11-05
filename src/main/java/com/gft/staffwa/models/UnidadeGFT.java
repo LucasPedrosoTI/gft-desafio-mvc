@@ -28,7 +28,7 @@ public class UnidadeGFT {
   private Long id;
 
   @Enumerated(EnumType.STRING)
-  private NomeUnidadeEnum nomeUnidade;
+  private EnumNomeUnidade nomeUnidade;
 
   @NotBlank(message = "CEP é obrigatório")
   @Pattern(regexp = "[\\d]{8}")
