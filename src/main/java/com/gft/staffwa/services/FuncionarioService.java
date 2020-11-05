@@ -3,6 +3,7 @@ package com.gft.staffwa.services;
 import java.util.List;
 
 import com.gft.staffwa.models.Funcionario;
+import com.gft.staffwa.repositories.Filter;
 import com.gft.staffwa.repositories.Funcionarios;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,8 @@ public class FuncionarioService {
   @Autowired
   private Funcionarios funcionarios;
 
-  public List<Funcionario> filtrar() {
-    return funcionarios.findAll();
+  public List<Funcionario> filtrar(Filter filtro) {
+    final String nomeFuncionario = filtro.getNomeFuncionario() == null ? "" : filtro.getNomeFuncionario();
+    return funcionarios.findByNomeContaining(nomeFuncionario);
   }
 }

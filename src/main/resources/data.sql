@@ -1,9 +1,9 @@
 INSERT INTO tecnologia (id, nome)
 values (1, "Java"),
   (2, ".Net"),
-  (3, "MySQL"),
-  (4, "HTML"),
-  (5, "CSS");
+  (3, "Database"),
+  (4, "HTML5"),
+  (5, "CSS3");
 INSERT INTO unidades_gft (
     id,
     cep,
@@ -75,11 +75,13 @@ VALUES (
     "2020-11-19",
     1,
     1
-  );
+  ),(2, 'DESENVOLVEDOR_FRONT', '2020-11-05', '0234567', 'José dos Santos', '2020-11-20', 1, 2);
+
 INSERT INTO vaga_tecnologia (vaga_id, tecnologia_id)
 VALUES (1, 1),
   (1, 3);
 INSERT INTO funcionario_tecnologia (funcionario_id, tecnologia_id)
 VALUES (1, 1),
   (1, 3),
-  (1, 4);
+  (1, 4),
+  (2,1),(2,4),(2,5);
