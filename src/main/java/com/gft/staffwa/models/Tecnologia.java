@@ -27,7 +27,7 @@ public class Tecnologia {
 
   @NotBlank(message = "Nome é obrigatório")
   @Enumerated(EnumType.STRING)
-  private EnumCargo nome;
+  private EnumNomeTecnologia nome;
 
   @ManyToMany(mappedBy = "tecnologias")
   private List<Vaga> vagas;

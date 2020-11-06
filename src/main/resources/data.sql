@@ -82,7 +82,7 @@ VALUES (
   (
     2,
     "José",
-    "DESENVOLVEDOR_BACK",
+    "ESTAGIARIO",
     "0123456",
     "2020-11-04",
     "2020-11-19",

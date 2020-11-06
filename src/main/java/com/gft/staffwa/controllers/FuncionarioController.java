@@ -1,20 +1,18 @@
 package com.gft.staffwa.controllers;
 
+import com.gft.staffwa.models.EnumCargo;
+import com.gft.staffwa.models.EnumNomeTecnologia;
+import com.gft.staffwa.models.EnumNomeUnidade;
+import com.gft.staffwa.models.Funcionario;
+import com.gft.staffwa.models.Tecnologia;
+import com.gft.staffwa.models.UnidadeGFT;
+import com.gft.staffwa.repositories.Filter;
+import com.gft.staffwa.services.FuncionarioService;
+import com.gft.staffwa.services.UnidadeGftService;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
-import com.gft.staffwa.models.EnumCargo;
-import com.gft.staffwa.models.EnumNomeTecnologia;
-import com.gft.staffwa.models.Funcionario;
-import com.gft.staffwa.models.Tecnologia;
-import com.gft.staffwa.models.UnidadeGFT;
-import com.gft.staffwa.models.EnumNomeUnidade;
-import com.gft.staffwa.repositories.Filter;
-import com.gft.staffwa.services.FuncionarioService;
-import com.gft.staffwa.services.UnidadeGftService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -71,7 +69,7 @@ public class FuncionarioController {
 
     funcionario.setLocalDeTrabalho(localDeTrabalho);
 
-    List<Tecnologia> tecnologias = Optional.of(funcionario.getTecnologias()).orElse(new ArrayList<Tecnologia>());
+    List<Tecnologia> tecnologias = Optional.of(funcionario.getTecnologias()).orElse(new ArrayList<>());
 
     System.out.println(">>>> " + tecnologias.size());
     System.out.println(">>>>> " + bindingResult.toString());

@@ -67,7 +67,6 @@
         >
           <option
             th:each="tecnologia : ${tecnologias}"
-            th:field="*{tecnologia.nome}"
             th:value="${tecnologia}"
             th:text="${tecnologia.descricao}"
           ></option>
