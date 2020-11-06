@@ -6,4 +6,5 @@ import lombok.Data;
 public class Filter {
 
 	private String nomeFuncionario;
+	private String descricaoVaga;
 }

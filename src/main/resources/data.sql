@@ -50,15 +50,25 @@ INSERT INTO vaga (
   )
 VALUES (
     1,
-    "GFTALP1",
+    "#ORIG2020",
     "2020-11-04",
     "DESENVOLVEDOR BACK END JAVA",
     "Banco Original",
     2
+  ),
+  (
+    1,
+    "#SANT2020",
+    "2020-11-06",
+    "ANALISTA DE TESTES",
+    "Santander",
+    2
   );
 INSERT INTO vaga_tecnologia (vaga_id, tecnologia_id)
 VALUES (1, 1),
-  (1, 3);
+  (1, 3),
+  (2, 2),
+  (2, 4);
 INSERT INTO funcionario (
     id,
     nome,

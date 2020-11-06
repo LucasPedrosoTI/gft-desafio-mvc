@@ -7,14 +7,14 @@
   layout:decorate="~{LayoutPadrao}"
 >
   <head>
-    <title>Funcionários</title>
+    <title>Vagas</title>
   </head>
 
   <body>
     <section layout:fragment="conteudo">
       <div th:replace="MensagemGeral"></div>
 
-      <h1 class="text-center my-3">Funcionários em WA</h1>
+      <h1 class="text-center my-3">Vagas em Aberto</h1>
 
       <form class="form-row" action="" method="get" th:object="${filtro}">
         <div class="col">
@@ -34,13 +34,13 @@
               <input
                 class="form-control"
                 type="text"
-                name="nomeFuncionario"
+                name="descricaoVaga"
                 id="search"
                 aria-describedby="searchPrepend"
-                placeholder="Digite o nome do funcionário"
+                placeholder="Digite a descrição da vaga"
                 autofocus="autofocus"
                 style="padding: 1.375rem 0.75rem"
-                th:field="*{nomeFuncionario}"
+                th:field="*{descricaoVaga}"
               />
               <button type="submit" class="btn btn-outline-primary">
                 Buscar
@@ -53,26 +53,27 @@
       <table class="table table-striped text-center">
         <thead>
           <tr>
-            <th>Nome</th>
-            <th>Cargo</th>
+            <th>Projeto</th>
+            <th>Descrição vaga</th>
             <th>Tecnologias</th>
-            <th>Inicio WA</th>
-            <th>Previsão término WA</th>
+            <th>Abertura da Vaga</th>
+            <th>Qtd Vagas</th>
+            <th>Código da vaga</th>
           </tr>
         </thead>
         <tbody>
-          <tr th:each="funcionario : ${funcionarios}">
-            <td th:text="${funcionario.nome}"></td>
+          <tr th:each="vaga : ${vagas}">
+            <td th:text="${vaga.projeto}"></td>
 
-            <td th:text="${funcionario.cargo.descricao}"></td>
+            <td th:text="${vaga.descricaoVaga}"></td>
 
             <td class="row">
-              <strong th:if="${#lists.isEmpty(funcionario.tecnologias)}"
+              <strong th:if="${#lists.isEmpty(vaga.tecnologias)}"
                 >Nenhuma tecnologia cadastrada</strong
               >
               <span
                 class="col-6 mb-2"
-                th:each="tecnologia : ${funcionario.tecnologias}"
+                th:each="tecnologia : ${vaga.tecnologias}"
               >
                 <i
                   th:classappend="|fa-${#strings.toLowerCase(tecnologia.nome)}|"
@@ -82,20 +83,22 @@
               </span>
             </td>
 
-            <td th:text="${{funcionario.inicioWa}}"></td>
+            <td th:text="${{vaga.dataDeAbertura}}"></td>
 
-            <td th:text="${{funcionario.terminoWa}}"></td>
+            <td th:text="${{vaga.qtdVagas}}"></td>
+
+            <td th:text="${{vaga.codigoVaga}}"></td>
           </tr>
           <tr>
-            <td colspan="5" th:if="${#lists.isEmpty(funcionarios)}">
-              Nenhum funcionário foi encontrado
+            <td colspan="6" th:if="${#lists.isEmpty(vagas)}">
+              Nenhuma vaga foi encontrada
             </td>
           </tr>
         </tbody>
       </table>
       <div class="d-flex">
-        <a href="/wa/funcionarios/cadastrar" class="mx-auto btn btn-primary"
-          >Cadastrar Funcionário</a
+        <a href="/wa/vagas/cadastrar" class="mx-auto btn btn-primary"
+          >Cadastrar nova vaga</a
         >
       </div>
     </section>
