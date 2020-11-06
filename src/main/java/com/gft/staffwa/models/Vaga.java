@@ -3,6 +3,7 @@ package com.gft.staffwa.models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -35,6 +38,7 @@ public class Vaga {
 	private Date dataDeAbertura;
 
 	@NotBlank(message = "Código da vaga é obrigatório")
+	@Column(unique = true)
 	private String codigoVaga;
 
 	@NotBlank(message = "Descrição é obrigatório")
@@ -44,6 +48,8 @@ public class Vaga {
 	private String projeto;
 
 	@NotNull(message = "Quantidade de vagas é obrigatório")
+	@Min(value = 0, message = "A quantidade não pode ser negativa")
+	@Max(value = 999999999, message = "Valor não pode ser maior que 9999999999")
 	private Integer qtdVagas;
 
 	@ToString.Exclude

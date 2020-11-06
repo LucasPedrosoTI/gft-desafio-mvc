@@ -27,7 +27,7 @@ import com.gft.staffwa.services.UnidadeGftService;
 @RequestMapping("/wa/funcionarios")
 public class FuncionarioController {
 
-	private static final String CADASTRO_VIEW = "CadastroFuncionario";
+	private static final String CADASTRO_FUNCIONARIO = "CadastroFuncionario";
 
 	@Autowired
 	private FuncionarioService funcionarioService;
@@ -39,7 +39,7 @@ public class FuncionarioController {
 	private TecnologiaService tecnologiaService;
 
 	@GetMapping
-	public ModelAndView renderViewFuncionarios(@ModelAttribute("filtro") Filter filtro) {
+	public ModelAndView renderFuncionarios(@ModelAttribute("filtro") Filter filtro) {
 		ModelAndView mv = new ModelAndView("Funcionarios");
 
 		List<Funcionario> funcionarios = this.funcionarioService.filtrar(filtro);
@@ -52,7 +52,7 @@ public class FuncionarioController {
 	@GetMapping("/cadastrar")
 	public ModelAndView renderCadastrarFuncionario() {
 
-		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
+		ModelAndView mv = new ModelAndView(CADASTRO_FUNCIONARIO);
 
 		mv.addObject(new Funcionario());
 
@@ -64,7 +64,7 @@ public class FuncionarioController {
 		try {
 
 			if (errors.hasErrors()) {
-				return CADASTRO_VIEW;
+				return CADASTRO_FUNCIONARIO;
 			}
 
 			this.funcionarioService.salvar(funcionario);
@@ -75,7 +75,7 @@ public class FuncionarioController {
 
 		} catch (Exception e) {
 			errors.rejectValue("", null, e.getMessage());
-			return CADASTRO_VIEW;
+			return CADASTRO_FUNCIONARIO;
 		}
 	}
 

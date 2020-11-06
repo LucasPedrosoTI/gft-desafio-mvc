@@ -57,7 +57,7 @@ VALUES (
     2
   ),
   (
-    1,
+    2,
     "#SANT2020",
     "2020-11-06",
     "ANALISTA DE TESTES",

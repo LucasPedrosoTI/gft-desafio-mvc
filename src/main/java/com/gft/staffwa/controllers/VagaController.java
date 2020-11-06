@@ -2,26 +2,37 @@ package com.gft.staffwa.controllers;
 
 import java.util.List;
 
+import com.gft.staffwa.models.Tecnologia;
 import com.gft.staffwa.models.Vaga;
 import com.gft.staffwa.repositories.Filter;
+import com.gft.staffwa.services.TecnologiaService;
 import com.gft.staffwa.services.VagaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/wa/vagas")
 public class VagaController {
 
+  private static final String CADASTRO_VAGA = "CadastroVaga";
+
   @Autowired
   VagaService vagaService;
 
+  @Autowired
+  TecnologiaService tecnologiaService;
+
   @GetMapping
-  public ModelAndView renderViewFuncionarios(@ModelAttribute("filtro") Filter filtro) {
+  public ModelAndView renderVagas(@ModelAttribute("filtro") Filter filtro) {
     ModelAndView mv = new ModelAndView("Vagas");
 
     List<Vaga> vagas = this.vagaService.filtrar(filtro);
@@ -31,4 +42,38 @@ public class VagaController {
     return mv;
   }
 
+  @GetMapping("/cadastrar")
+  public ModelAndView renderCadastrarVaga() {
+
+    ModelAndView mv = new ModelAndView(CADASTRO_VAGA);
+
+    mv.addObject(new Vaga());
+
+    return mv;
+  }
+
+  @PostMapping("/cadastrar")
+  public String salvarFuncionario(@Validated Vaga vaga, Errors errors, RedirectAttributes attributes) {
+    try {
+
+      if (errors.hasErrors()) {
+        return CADASTRO_VAGA;
+      }
+
+      this.vagaService.salvar(vaga);
+
+      attributes.addFlashAttribute("mensagem", "Funcionário salvo com sucesso!");
+
+      return "redirect:/wa/vagas";
+
+    } catch (Exception e) {
+      errors.rejectValue("", null, e.getMessage());
+      return CADASTRO_VAGA;
+    }
+  }
+
+  @ModelAttribute("tecnologias")
+  public List<Tecnologia> tecnologias() {
+    return this.tecnologiaService.findAll();
+  }
 }
