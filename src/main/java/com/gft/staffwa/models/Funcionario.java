@@ -2,6 +2,8 @@ package com.gft.staffwa.models;
 
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -17,9 +19,11 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 @NoArgsConstructor
@@ -27,39 +31,39 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "funcionario")
 public class Funcionario {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-  @NotBlank(message = "Matricula é obrigatório")
-  private String matricula;
+	@NotBlank(message = "Matricula é obrigatório")
+	@Column(unique = true)
+	private String matricula;
 
-  @NotBlank(message = "Nome é obrigatório")
-  private String nome;
+	@NotBlank(message = "Nome é obrigatório")
+	private String nome;
 
-  @Enumerated(EnumType.STRING)
-  private EnumCargo cargo;
+	@Enumerated(EnumType.STRING)
+	private EnumCargo cargo;
 
-  @NotNull(message = "Data de início é obrigatório")
-  @DateTimeFormat(pattern = "dd/MM/yyyy")
-  @Temporal(TemporalType.DATE)
-  private Date inicioWa;
+	@NotNull(message = "Data de início é obrigatório")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
+	private Date inicioWa;
 
-  @NotNull(message = "Data de término é obrigatório")
-  @DateTimeFormat(pattern = "dd/MM/yyyy")
-  @Temporal(TemporalType.DATE)
-  private Date terminoWa;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
+	private Date terminoWa;
 
-  @ManyToMany
-  @JoinTable(name = "funcionario_tecnologia", joinColumns = @JoinColumn(name = "funcionario_id"), inverseJoinColumns = @JoinColumn(name = "tecnologia_id"))
-  private List<Tecnologia> tecnologias;
+	@ManyToMany
+	@JoinTable(name = "funcionario_tecnologia", joinColumns = @JoinColumn(name = "funcionario_id"), inverseJoinColumns = @JoinColumn(name = "tecnologia_id"))
+	private List<Tecnologia> tecnologias;
 
-  @ManyToOne
-  @JoinColumn(name = "local_de_trabalho_id")
-  private UnidadeGFT localDeTrabalho;
+	@ManyToOne
+	@JoinColumn(name = "local_de_trabalho_id")
+	private UnidadeGFT localDeTrabalho;
 
-  @ManyToOne
-  @JoinColumn(name = "alocacao_id")
-  private Vaga alocacao;
+	@ManyToOne
+	@JoinColumn(name = "alocacao_id")
+	private Vaga alocacao;
 
 }

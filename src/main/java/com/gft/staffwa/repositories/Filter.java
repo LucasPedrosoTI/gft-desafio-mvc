@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class Filter {
 
-  private String nomeFuncionario;
+	private String nomeFuncionario;
 }

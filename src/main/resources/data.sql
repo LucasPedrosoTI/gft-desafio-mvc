@@ -1,6 +1,6 @@
 INSERT INTO tecnologia (id, nome)
-VALUES (1, "JAVA"),
-  (2, "JAVASCRIPT"),
+VALUES (1, "Java"),
+  (2, "JavaScript"),
   (3, "SQL"),
   (4, "HTML"),
   (5, "CSS");
@@ -10,7 +10,7 @@ INSERT INTO unidades_gft (
     cidade,
     endereco,
     estado,
-    nome_unidade,
+    nome,
     telefone
   )
 VALUES (
@@ -19,7 +19,7 @@ VALUES (
     "Barueri",
     "Alameda Rio Negro, n° 585 Ed. Padauiri, 10° andar",
     "SP",
-    "GFT_ALPHAVILLE",
+    "GFT Alphaville",
     "1121763253"
   ),
   (
@@ -28,7 +28,7 @@ VALUES (
     "Rebouças",
     "Av. Sete de Setembro, 2451 Torre Trinity Corporate 6º andar",
     "PR",
-    "GFT_SOROCABA",
+    "GFT Sorocaba",
     "4140095700"
   ),
   (
@@ -37,7 +37,7 @@ VALUES (
     "Jardim Sta. Rosália",
     "Av. São Francisco, 98",
     "SP",
-    "GFT_CURITIBA",
+    "GFT Curitiba",
     "1121763553"
   );
 INSERT INTO vaga (
@@ -83,7 +83,7 @@ VALUES (
     2,
     "José",
     "ESTAGIARIO",
-    "0123456",
+    "0123457",
     "2020-11-04",
     "2020-11-19",
     1,

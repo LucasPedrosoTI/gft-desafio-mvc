@@ -1,6 +1,7 @@
 package com.gft.staffwa.services;
 
-import com.gft.staffwa.models.EnumNomeUnidade;
+import java.util.List;
+
 import com.gft.staffwa.models.UnidadeGFT;
 import com.gft.staffwa.repositories.UnidadesGFT;
 
@@ -13,7 +14,11 @@ public class UnidadeGftService {
   @Autowired
   UnidadesGFT unidadesGft;
 
-  public UnidadeGFT findOneByNomeUnidade(EnumNomeUnidade nomeUnidade) {
-    return unidadesGft.findByNomeUnidade(nomeUnidade);
+  public UnidadeGFT findOneByNomeUnidade(String nome) {
+    return unidadesGft.findByNome(nome);
+  }
+
+  public List<UnidadeGFT> findAll() {
+    return unidadesGft.findAll();
   }
 }

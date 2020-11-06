@@ -14,9 +14,12 @@
     <h1 class="text-center my-3">Cadastro de Funcionário</h1>
 
     <form action="" method="POST" th:object="${funcionario}">
+      <div th:replace="MensagemGeral"></div>
       <div th:replace="MensagemErro"></div>
 
       <input type="hidden" th:field="*{id}" />
+      
+      <input type="hidden" th:field="*{terminoWa}" />
       <div class="form-group">
         <label for="matricula">Matrícula</label>
         <input
@@ -24,15 +27,27 @@
           type="text"
           class="form-control"
           id="matricula"
+          th:classappend="${#fields.hasErrors('matricula')} ? is-invalid"
         />
       </div>
       <div class="form-group">
         <label for="nome">Nome</label>
-        <input th:field="*{nome}" type="text" class="form-control" id="nome" />
+        <input
+          th:field="*{nome}"
+          type="text"
+          class="form-control"
+          id="nome"
+          th:classappend="${#fields.hasErrors('nome')} ? is-invalid"
+        />
       </div>
       <div class="form-group">
         <label for="cargo">Cargo</label>
-        <select th:field="*{cargo}" class="form-control" id="cargo">
+        <select
+          th:field="*{cargo}"
+          class="form-control"
+          id="cargo"
+          th:classappend="${#fields.hasErrors('cargo')} ? is-invalid"
+        >
           <option
             th:each="cargo : ${cargos}"
             th:value="${cargo}"
@@ -44,34 +59,74 @@
       <div class="form-group">
         <label for="localDeTrabalho">Local De Trabalho</label>
         <select
-          th:field="*{localDeTrabalho.nomeUnidade}"
+          th:field="*{localDeTrabalho}"
           class="form-control"
           id="localDeTrabalho"
+          th:classappend="${#fields.hasErrors('localDeTrabalho')} ? is-invalid"
         >
           <option
             th:each="localDeTrabalho : ${locais}"
-            th:value="${localDeTrabalho}"
-            th:text="${localDeTrabalho.descricao}"
+            th:value="${localDeTrabalho.id}"
+            th:text="${localDeTrabalho.nome}"
           ></option>
         </select>
       </div>
 
       <div class="form-group">
+        <label for="inicioWa">Data de Início</label>
+        <div>
+          <input
+            type="text"
+            th:field="*{inicioWa}"
+            id="inicioWa"
+            class="form-control"
+            th:classappend="${#fields.hasErrors('inicioWa')} ? is-invalid"
+            data-provide="datepicker"
+            data-date-format="dd/mm/yyyy"
+            data-date-language="pt-BR"
+            data-date-autoclose="true"
+            data-date-today-highlight="true"
+          />
+        </div>
+      </div>
+      
+      
+
+      <ul>
+        <li th:each="tecnologia : ${tecnologias}">
+          <div class="custom-control custom-switch">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              th:id="${tecnologia.nome}"
+              th:field="*{tecnologias}"
+              th:value="${tecnologia.id}"
+              th:classappend="${#fields.hasErrors('tecnologias')} ? is-invalid"
+            />
+            <label
+              class="custom-control-label"
+              th:for="${tecnologia.nome}"
+              th:text="${tecnologia.nome}"
+            ></label>
+          </div>
+        </li>
+      </ul>
+
+      <!-- <div class="form-group">
         <label for="tecnologias">Tecnologias</label>
         <select
           th:field="*{tecnologias}"
           class="form-control"
           id="tecnologias"
-          multiple
           size="5"
         >
           <option
             th:each="tecnologia : ${tecnologias}"
-            th:value="${tecnologia}"
+            th:value="${{tecnologia}}"
             th:text="${tecnologia.descricao}"
           ></option>
         </select>
-      </div>
+      </div> -->
       <div class="d-flex">
         <button class="btn btn-primary mx-auto mb-5" type="submit">
           Cadastrar

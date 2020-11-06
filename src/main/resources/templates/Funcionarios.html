@@ -12,6 +12,8 @@
 
   <body>
     <section layout:fragment="conteudo">
+      <div th:replace="MensagemGeral"></div>
+
       <h1 class="text-center my-3">Funcionários em WA</h1>
 
       <form class="form-row" action="" method="get" th:object="${filtro}">
@@ -73,10 +75,10 @@
                 th:each="tecnologia : ${funcionario.tecnologias}"
               >
                 <i
-                  th:classappend="|fa-${#strings.toLowerCase(tecnologia.nome.descricao)}|"
+                  th:classappend="|fa-${#strings.toLowerCase(tecnologia.nome)}|"
                   class="fab"
                 ></i>
-                <span th:text="${tecnologia.nome.descricao}"></span>
+                <span th:text="${tecnologia.nome}"></span>
               </span>
             </td>
 
