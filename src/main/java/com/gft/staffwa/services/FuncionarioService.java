@@ -19,7 +19,7 @@ public class FuncionarioService {
 
 	public List<Funcionario> filtrar(Filter filtro) {
 		final String nomeFuncionario = (filtro).getNomeFuncionario() == null ? "" : filtro.getNomeFuncionario();
-		return this.funcionarios.findByNomeContaining(nomeFuncionario);
+		return this.funcionarios.findByNomeContainingAndAlocacaoIsNull(nomeFuncionario);
 	}
 
 	public void salvar(Funcionario funcionario) throws DataIntegrityViolationException {

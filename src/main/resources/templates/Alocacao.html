@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html
+  lang="pt-BR"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{LayoutPadrao}"
+>
+  <head>
+    <title>Funcionários</title>
+  </head>
+
+  <body>
+    <section layout:fragment="conteudo">
+      <h1>Alocação de Funcionário</h1>
+
+      <form action="" method="POST" th:object="${alocacao}">
+        <div th:replace="MensagemGeral"></div>
+        <div th:replace="MensagemErro"></div>
+
+        <div class="form-group">
+          <select
+            th:field="*{funcionario}"
+            id="funcionario"
+            class="form-control"
+            required
+          >
+            <option
+              th:each="funcionario : ${funcionarios}"
+              th:value="${funcionario.id}"
+              th:text="${funcionario.nome}"
+            ></option>
+            <option th:value="null" th:if="${#lists.isEmpty(funcionarios)}">
+              Nenhum funcionário encontrado
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select th:field="*{vaga}" id="vaga" class="form-control" required>
+            <option
+              th:each="vaga : ${vagas}"
+              th:value="${vaga.id}"
+              th:text="${vaga.descricaoVaga}"
+            ></option>
+            <option th:value="null" th:if="${#lists.isEmpty(vagas)}">
+              Nenhuma vaga encontrada
+            </option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Alocar</button>
+      </form>
+    </section>
+  </body>
+</html>

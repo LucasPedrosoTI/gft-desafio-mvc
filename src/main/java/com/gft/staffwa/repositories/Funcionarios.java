@@ -7,5 +7,5 @@ import com.gft.staffwa.models.Funcionario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface Funcionarios extends JpaRepository<Funcionario, Long> {
-  public List<Funcionario> findByNomeContaining(String nomeFuncionario);
+  public List<Funcionario> findByNomeContainingAndAlocacaoIsNull(String nomeFuncionario);
 }

@@ -18,7 +18,7 @@ public class VagaService {
 
   public List<Vaga> filtrar(Filter filtro) {
     final String descricaoVaga = (filtro).getDescricaoVaga() == null ? "" : filtro.getDescricaoVaga();
-    return this.vagas.findByDescricaoVagaContaining(descricaoVaga);
+    return this.vagas.findVagasAndFilter(descricaoVaga);
   }
 
   public void salvar(Vaga vaga) {
