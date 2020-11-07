@@ -20,19 +20,19 @@
     </button>
     <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Início<span class="sr-only">(página atual)</span></a>
+        <li class="nav-item" th:classappend="${menuInicio} ? active" >
+          <a class="nav-link" href="/">Início</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" th:classappend="${menuFuncionarios} ? active">
           <a class="nav-link" href="/wa/funcionarios">Funcionários</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" th:classappend="${menuVagas} ? active">
           <a class="nav-link" href="/wa/vagas">Vagas</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" th:classappend="${menuAlocacao} ? active">
           <a class="nav-link" href="/wa/alocacao">Alocação</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" th:classappend="${menuHistorico} ? active">
           <a class="nav-link" href="/wa/historico">Histórico</a>
         </li>
       </ul>

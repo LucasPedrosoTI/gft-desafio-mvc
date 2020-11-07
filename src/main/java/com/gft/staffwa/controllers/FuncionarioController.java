@@ -84,6 +84,11 @@ public class FuncionarioController {
 		return Arrays.asList(EnumCargo.values());
 	}
 
+	@ModelAttribute("menuFuncionarios")
+	public boolean menuFuncionarios() {
+		return true;
+	}
+
 	@ModelAttribute("tecnologias")
 	public List<Tecnologia> tecnologias() {
 		return this.tecnologiaService.findAll();

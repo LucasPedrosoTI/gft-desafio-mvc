@@ -76,4 +76,9 @@ public class VagaController {
   public List<Tecnologia> tecnologias() {
     return this.tecnologiaService.findAll();
   }
+
+  @ModelAttribute("menuVagas")
+  public boolean menuVagas() {
+    return true;
+  }
 }

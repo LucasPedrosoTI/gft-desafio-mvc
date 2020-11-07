@@ -25,3 +25,15 @@ li {
 .btn-primary {
   background-color: #1f4fa3;
 }
+
+.active {
+  box-shadow: inset 0 -2px 0 #1f4fa3;
+}
+
+.navbar-light .navbar-nav .active > .nav-link {
+  color: #1f4fa3;
+}
+
+.nav-link:hover {
+  box-shadow: inset 0 -2px 0 #1f4fa3;
+}
