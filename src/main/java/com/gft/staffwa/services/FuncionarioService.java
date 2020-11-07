@@ -22,6 +22,11 @@ public class FuncionarioService {
 		return this.funcionarios.findByNomeContainingAndAlocacaoIsNull(nomeFuncionario);
 	}
 
+	public List<Funcionario> filtrarAlocados(Filter filtro) {
+		final String nomeFuncionario = (filtro).getNomeFuncionario() == null ? "" : filtro.getNomeFuncionario();
+		return this.funcionarios.findByNomeContainingAndAlocacaoIsNotNull(nomeFuncionario);
+	}
+
 	public void salvar(Funcionario funcionario) throws DataIntegrityViolationException {
 		try {
 			funcionario.setTerminoWa(TerminoWa.calcularData(funcionario.getInicioWa(), 15));

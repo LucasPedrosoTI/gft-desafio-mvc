@@ -8,4 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface Funcionarios extends JpaRepository<Funcionario, Long> {
   public List<Funcionario> findByNomeContainingAndAlocacaoIsNull(String nomeFuncionario);
+
+  public List<Funcionario> findByNomeContainingAndAlocacaoIsNotNull(String nomeFuncionario);
 }

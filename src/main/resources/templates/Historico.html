@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html
+  lang="pt-BR"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{LayoutPadrao}"
+>
+  <head>
+    <title>Funcionários</title>
+  </head>
+
+  <body>
+    <section layout:fragment="conteudo">
+      <h1 class="text-center my-3">Alocação de Funcionário</h1>
+
+      <form class="form-row" action="" method="get" th:object="${filtro}">
+        <div class="col">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span
+                  class="input-group-text"
+                  id="searchPrepend"
+                  style="padding: 0"
+                >
+                  <button type="submit" class="btn">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </span>
+              </div>
+              <input
+                class="form-control"
+                type="text"
+                name="nomeFuncionario"
+                id="search"
+                aria-describedby="searchPrepend"
+                placeholder="Digite o nome do funcionário"
+                autofocus="autofocus"
+                style="padding: 1.375rem 0.75rem"
+                th:field="*{nomeFuncionario}"
+              />
+              <button type="submit" class="btn btn-outline-primary">
+                Buscar
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <table
+        class="table table-hover table-striped text-center table-responsive-md"
+      >
+        <thead>
+          <tr>
+            <th>Funcionário</th>
+            <th>Projeto</th>
+            <th>Código da Vaga</th>
+            <th>Início WA</th>
+            <th>Início Alocação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="funcionario : ${funcionarios}">
+            <td th:text="${funcionario.nome}"></td>
+
+            <td th:text="${funcionario.alocacao.projeto}"></td>
+
+            <td th:text="${funcionario.alocacao.codigoVaga}"></td>
+
+            <td th:text="${{funcionario.inicioWa}}"></td>
+
+            <td th:text="${{funcionario.dataDeAlocacao}}"></td>
+          </tr>
+          <tr>
+            <td colspan="5" th:if="${#lists.isEmpty(funcionarios)}">
+              Nenhum funcionário foi encontrado
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </body>
+</html>

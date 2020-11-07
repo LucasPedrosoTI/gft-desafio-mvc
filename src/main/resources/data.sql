@@ -76,8 +76,7 @@ INSERT INTO funcionario (
     matricula,
     inicio_wa,
     termino_wa,
-    local_de_trabalho_id,
-    alocacao_id
+    local_de_trabalho_id
   )
 VALUES (
     1,
@@ -86,7 +85,6 @@ VALUES (
     "0123456",
     "2020-11-04",
     "2020-11-19",
-    1,
     1
   ),
   (
@@ -96,7 +94,6 @@ VALUES (
     "0123457",
     "2020-11-04",
     "2020-11-19",
-    1,
     1
   );
 INSERT INTO funcionario_tecnologia (funcionario_id, tecnologia_id)

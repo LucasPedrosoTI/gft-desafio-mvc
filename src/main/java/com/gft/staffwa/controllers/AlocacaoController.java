@@ -68,7 +68,7 @@ public class AlocacaoController {
   }
 
   @ModelAttribute("menuAlocacao")
-  public boolean menuFuncionarios() {
+  public boolean menuAlocacao() {
     return true;
   }
 

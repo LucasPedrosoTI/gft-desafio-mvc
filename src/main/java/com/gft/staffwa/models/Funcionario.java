@@ -66,4 +66,8 @@ public class Funcionario {
 	@JoinColumn(name = "alocacao_id")
 	private Vaga alocacao;
 
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
+	private Date dataDeAlocacao;
+
 }

@@ -1,5 +1,7 @@
 package com.gft.staffwa.services;
 
+import java.util.Date;
+
 import com.gft.staffwa.models.Funcionario;
 import com.gft.staffwa.models.Vaga;
 import com.gft.staffwa.repositories.Funcionarios;
@@ -21,6 +23,7 @@ public class AlocacaoService {
     try {
 
       funcionario.setAlocacao(vaga);
+      funcionario.setDataDeAlocacao(new Date());
       vaga.setQtdVagas(vaga.getQtdVagas() - 1);
 
       funcionarios.save(funcionario);
