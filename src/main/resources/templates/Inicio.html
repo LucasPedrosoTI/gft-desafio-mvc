@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html
+  lang="pt-BR"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{LayoutPadrao}"
+>
+  <head>
+    <title>Início</title>
+  </head>
+
+  <body>
+    <section layout:fragment="conteudo">
+      <div class="container h-100">
+        <div
+          class="d-flex flex-column justify-content-center align-items-center h-100"
+        >
+          <h1 class="text-center my-4">
+            <strong> Gerenciador de Funcionários em WA </strong>
+          </h1>
+
+          <a href="/wa/funcionarios" class="btn btn-primary w-25">Iniciar</a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

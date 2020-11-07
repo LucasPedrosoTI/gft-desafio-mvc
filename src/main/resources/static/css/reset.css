@@ -17,3 +17,11 @@ ul {
 li {
   list-style-type: none;
 }
+
+.navbar {
+  flex-wrap: nowrap;
+}
+
+.btn-primary {
+  background-color: #1f4fa3;
+}
