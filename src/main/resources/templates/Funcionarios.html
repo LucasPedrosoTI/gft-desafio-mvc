@@ -50,7 +50,9 @@
         </div>
       </form>
 
-      <table class="table table-striped text-center table-responsive-md">
+      <table
+        class="table table-hover table-striped text-center table-responsive-md"
+      >
         <thead>
           <tr>
             <th>Nome</th>
@@ -66,20 +68,19 @@
 
             <td th:text="${funcionario.cargo.descricao}"></td>
 
-            <td class="row">
+            <td>
               <strong th:if="${#lists.isEmpty(funcionario.tecnologias)}"
                 >Nenhuma tecnologia cadastrada</strong
               >
-              <span
-                class="col-6 mb-2"
-                th:each="tecnologia : ${funcionario.tecnologias}"
-              >
-                <i
-                  th:classappend="|fa-${#strings.toLowerCase(tecnologia.nome)}|"
-                  class="fab"
-                ></i>
-                <span th:text="${tecnologia.nome}"></span>
-              </span>
+              <ul class="row">
+                <li
+                  class="col-md-6"
+                  th:each="tecnologia : ${funcionario.tecnologias}"
+                >
+                  <span class="badge badge-info" th:text="${tecnologia.nome}">
+                  </span>
+                </li>
+              </ul>
             </td>
 
             <td th:text="${{funcionario.inicioWa}}"></td>

@@ -67,20 +67,16 @@
 
             <td th:text="${vaga.descricaoVaga}"></td>
 
-            <td class="row">
+            <td>
               <strong th:if="${#lists.isEmpty(vaga.tecnologias)}"
                 >Nenhuma tecnologia cadastrada</strong
               >
-              <span
-                class="col-6 mb-2"
-                th:each="tecnologia : ${vaga.tecnologias}"
-              >
-                <i
-                  th:classappend="|fa-${#strings.toLowerCase(tecnologia.nome)}|"
-                  class="fab"
-                ></i>
-                <span th:text="${tecnologia.nome}"></span>
-              </span>
+              <ul class="row">
+                <li class="col-md-6" th:each="tecnologia : ${vaga.tecnologias}">
+                  <span class="badge badge-info" th:text="${tecnologia.nome}">
+                  </span>
+                </li>
+              </ul>
             </td>
 
             <td th:text="${{vaga.dataDeAbertura}}"></td>
