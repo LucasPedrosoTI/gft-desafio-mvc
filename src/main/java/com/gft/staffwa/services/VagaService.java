@@ -8,6 +8,7 @@ import com.gft.staffwa.repositories.Vagas;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,9 +17,9 @@ public class VagaService {
   @Autowired
   Vagas vagas;
 
-  public List<Vaga> filtrar(Filter filtro) {
-    final String descricaoVaga = (filtro).getDescricaoVaga() == null ? "" : filtro.getDescricaoVaga();
-    return this.vagas.findVagasAndFilter(descricaoVaga);
+  public List<Vaga> filtrar(Filter filtro, Pageable pageable) {
+    final String descricaoVaga = (filtro).getBusca() == null ? "" : filtro.getBusca();
+    return this.vagas.findVagasAndFilter(descricaoVaga, pageable);
   }
 
   public void salvar(Vaga vaga) {
@@ -29,6 +30,10 @@ public class VagaService {
     } catch (Exception e) {
       throw new IllegalArgumentException(e.getMessage());
     }
+  }
+
+  public Long countByQtdVagasGreaterThan(int num) {
+    return vagas.countByQtdVagasGreaterThan(num);
   }
 
 }

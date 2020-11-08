@@ -6,8 +6,10 @@ import com.gft.staffwa.models.Funcionario;
 import com.gft.staffwa.repositories.Filter;
 import com.gft.staffwa.repositories.Funcionarios;
 import com.gft.staffwa.services.FuncionarioService;
+import com.gft.staffwa.utils.Paginacao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,11 +27,13 @@ public class HistoricoController {
   Funcionarios funcionarios;
 
   @GetMapping
-  public ModelAndView renderHistorico(@ModelAttribute("filtro") Filter filtro) {
+  public ModelAndView renderHistorico(@ModelAttribute("filtro") Filter filtro, Pageable pageable) {
 
     var mv = new ModelAndView("Historico");
 
-    List<Funcionario> funcionarios = funcionarioService.filtrarAlocados(filtro);
+    List<Funcionario> funcionarios = funcionarioService.filtrarAlocados(filtro, pageable);
+
+    Paginacao.setPaginacao(mv, "historico", pageable, funcionarioService.countByAlocacaoIsNotNull());
 
     mv.addObject("funcionarios", funcionarios);
 

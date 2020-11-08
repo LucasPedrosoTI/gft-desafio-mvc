@@ -7,8 +7,10 @@ import com.gft.staffwa.models.Vaga;
 import com.gft.staffwa.repositories.Filter;
 import com.gft.staffwa.services.TecnologiaService;
 import com.gft.staffwa.services.VagaService;
+import com.gft.staffwa.utils.Paginacao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -32,10 +34,12 @@ public class VagaController {
   TecnologiaService tecnologiaService;
 
   @GetMapping
-  public ModelAndView renderVagas(@ModelAttribute("filtro") Filter filtro) {
+  public ModelAndView renderVagas(@ModelAttribute("filtro") Filter filtro, Pageable pageable) {
     ModelAndView mv = new ModelAndView("Vagas");
 
-    List<Vaga> vagas = this.vagaService.filtrar(filtro);
+    List<Vaga> vagas = this.vagaService.filtrar(filtro, pageable);
+
+    Paginacao.setPaginacao(mv, "vagas", pageable, vagaService.countByQtdVagasGreaterThan(0));
 
     mv.addObject("vagas", vagas);
 

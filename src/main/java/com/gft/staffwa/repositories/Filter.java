@@ -5,6 +5,5 @@ import lombok.Data;
 @Data
 public class Filter {
 
-	private String nomeFuncionario;
-	private String descricaoVaga;
+	private String busca;
 }

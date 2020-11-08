@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.gft.staffwa.models.Funcionario;
@@ -17,14 +18,14 @@ public class FuncionarioService {
 	@Autowired
 	private Funcionarios funcionarios;
 
-	public List<Funcionario> filtrar(Filter filtro) {
-		final String nomeFuncionario = (filtro).getNomeFuncionario() == null ? "" : filtro.getNomeFuncionario();
-		return this.funcionarios.findByNomeContainingAndAlocacaoIsNull(nomeFuncionario);
+	public List<Funcionario> filtrar(Filter filtro, Pageable pageable) {
+		final String nomeFuncionario = (filtro).getBusca() == null ? "" : filtro.getBusca();
+		return this.funcionarios.findByNomeContainingAndAlocacaoIsNull(nomeFuncionario, pageable);
 	}
 
-	public List<Funcionario> filtrarAlocados(Filter filtro) {
-		final String nomeFuncionario = (filtro).getNomeFuncionario() == null ? "" : filtro.getNomeFuncionario();
-		return this.funcionarios.findByNomeContainingAndAlocacaoIsNotNull(nomeFuncionario);
+	public List<Funcionario> filtrarAlocados(Filter filtro, Pageable pageable) {
+		final String nomeFuncionario = (filtro).getBusca() == null ? "" : filtro.getBusca();
+		return this.funcionarios.findByNomeContainingAndAlocacaoIsNotNull(nomeFuncionario, pageable);
 	}
 
 	public void salvar(Funcionario funcionario) throws DataIntegrityViolationException {
@@ -36,6 +37,14 @@ public class FuncionarioService {
 		} catch (Exception e) {
 			throw new IllegalArgumentException(e.getMessage());
 		}
+	}
+
+	public Long countByAlocacaoIsNull() {
+		return funcionarios.countByAlocacaoIsNull();
+	}
+
+	public Long countByAlocacaoIsNotNull() {
+		return funcionarios.countByAlocacaoIsNotNull();
 	}
 
 }

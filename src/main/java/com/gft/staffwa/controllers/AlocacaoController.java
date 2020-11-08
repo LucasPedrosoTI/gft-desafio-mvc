@@ -10,6 +10,7 @@ import com.gft.staffwa.repositories.Vagas;
 import com.gft.staffwa.services.AlocacaoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,13 +59,13 @@ public class AlocacaoController {
   }
 
   @ModelAttribute("funcionarios")
-  public List<Funcionario> funcionarios() {
-    return funcionarios.findByNomeContainingAndAlocacaoIsNull("");
+  public List<Funcionario> funcionarios(Pageable pageable) {
+    return funcionarios.findByAlocacaoIsNull();
   }
 
   @ModelAttribute("vagas")
   public List<Vaga> vagas() {
-    return vagas.findVagasAndFilter("");
+    return vagas.findByQtdVagasGreaterThan(0);
   }
 
   @ModelAttribute("menuAlocacao")

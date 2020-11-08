@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -22,6 +23,7 @@ import com.gft.staffwa.repositories.Filter;
 import com.gft.staffwa.services.FuncionarioService;
 import com.gft.staffwa.services.TecnologiaService;
 import com.gft.staffwa.services.UnidadeGftService;
+import com.gft.staffwa.utils.Paginacao;
 
 @Controller
 @RequestMapping("/wa/funcionarios")
@@ -39,10 +41,13 @@ public class FuncionarioController {
 	private TecnologiaService tecnologiaService;
 
 	@GetMapping
-	public ModelAndView renderFuncionarios(@ModelAttribute("filtro") Filter filtro) {
+	public ModelAndView renderFuncionarios(@ModelAttribute("filtro") Filter filtro, Pageable pageable) {
+
 		ModelAndView mv = new ModelAndView("Funcionarios");
 
-		List<Funcionario> funcionarios = this.funcionarioService.filtrar(filtro);
+		List<Funcionario> funcionarios = this.funcionarioService.filtrar(filtro, pageable);
+
+		Paginacao.setPaginacao(mv, "funcionarios", pageable, funcionarioService.countByAlocacaoIsNull());
 
 		mv.addObject("funcionarios", funcionarios);
 
