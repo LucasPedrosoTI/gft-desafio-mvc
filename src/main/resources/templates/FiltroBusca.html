@@ -47,13 +47,16 @@
               <span class="sr-only">Primeira</span>
             </a>
           </li>
+
           <li th:each="nrPagina : ${nroPaginas}" class="page-item">
             <a
               class="page-link"
+              th:classappend="${paginaAtual == nrPagina - 1} ? page-active"
               th:href="@{/wa/{rotaAtual}(page=${nrPagina - 1}, rotaAtual=${rotaAtual})}"
               th:text="${nrPagina}"
             ></a>
           </li>
+
           <li
             class="page-item"
             th:if="${paginaAtual + 1 < #lists.size(nroPaginas)}"

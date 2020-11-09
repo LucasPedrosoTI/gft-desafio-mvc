@@ -41,3 +41,9 @@ li {
 .table > tbody > tr > td {
   vertical-align: middle;
 }
+
+.page-active {
+  color: #1f4fa3;
+  font-weight: bold;
+  transform: scale(1.1);
+}

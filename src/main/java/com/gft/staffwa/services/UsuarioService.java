@@ -62,9 +62,6 @@ public class UsuarioService implements UserDetailsService {
       throw new DuplicateKeyException("E-mail já existente");
 
     try {
-
-      System.out.println(">>>> " + usuario.isAdmin());
-
       Usuario novoUsuario = usuarios
           .save(new Usuario(null, usuario.getEmail(), passwordEncoder.encode(usuario.getSenha()), usuario.isAdmin()));
       request.login(usuario.getEmail(), usuario.getSenha());

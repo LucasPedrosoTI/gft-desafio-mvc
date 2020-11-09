@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .permitAll().antMatchers("/**/cadastrar").hasRole("ADMIN").anyRequest().authenticated().and().formLogin()
         .loginPage("/login").permitAll().usernameParameter("email").passwordParameter("senha")
         .defaultSuccessUrl("/", true).failureUrl("/login?erro=true").and().logout().invalidateHttpSession(true)
-        .logoutSuccessUrl("/login?logout=true").permitAll().logoutUrl("/logout");
+        .logoutSuccessUrl("/login?logout=true").permitAll().logoutUrl("/logout").deleteCookies("JSESSIONID");
   }
 
   @Override
