@@ -1,6 +1,8 @@
 package com.gft.staffwa.utils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -12,40 +14,51 @@ public class Paginacao {
 
     int totalPaginas = getTotalPaginas(totalInstances, pageable);
 
-    if (totalPaginas > 0) {
-      List<Integer> nroPaginas = getListaDePaginas(pageable, totalPaginas);
+    List<Integer> nroPaginas = Optional.of(getListaDePaginas(pageable, totalPaginas)).orElse(new ArrayList<Integer>());
 
-      System.out.println(pageable);
-      System.out.println(nroPaginas);
+    System.out.println(pageable);
+    System.out.println(nroPaginas);
 
-      addObjectsToModel(mv, nroPaginas, pageable, rotaAtual);
-    }
+    addObjectsToModel(mv, nroPaginas, pageable, rotaAtual);
+
   }
 
   private static List<Integer> getListaDePaginas(Pageable pageable, int totalPaginas) {
 
     int paginaAtual = pageable.getPageNumber();
 
-    int paginasAnteriores = getPaginasAnteriores(paginaAtual);
+    int paginasAnteriores = getPaginasAnteriores(paginaAtual, totalPaginas);
 
-    int proxPaginas = paginaAtual + 3 > totalPaginas ? totalPaginas : paginaAtual + 3;
+    int proxPaginas = getProxPaginas(paginaAtual, totalPaginas);
 
     return IntStream.rangeClosed(paginasAnteriores, proxPaginas).boxed().collect(Collectors.toList());
   }
 
-  private static int getProxPaginas(int paginaAtual) {
-    // TODO MÉTODO PARA PRÓXIMAS PÁGINAS
-    return 0;
+  private static int getProxPaginas(int paginaAtual, int totalPaginas) {
+    int inicio = paginaAtual - 2;
+    int fim = paginaAtual + 2;
+
+    if (inicio <= 0) {
+      fim += ((inicio - 1) * (-1));
+    }
+
+    fim = fim > totalPaginas ? totalPaginas : fim;
+
+    return fim;
   }
 
-  private static int getPaginasAnteriores(int paginaAtual) {
-    if (paginaAtual - 2 > 0) {
-      return paginaAtual - 2;
-    } else if (paginaAtual - 1 > 0) {
-      return paginaAtual - 1;
-    } else {
-      return 1;
+  private static int getPaginasAnteriores(int paginaAtual, int totalPaginas) {
+    int inicio = paginaAtual - 2;
+
+    if (paginaAtual + 1 == totalPaginas) {
+      inicio--;
     }
+
+    if (inicio <= 0) {
+      inicio = 1;
+    }
+
+    return inicio;
   }
 
   private static int getTotalPaginas(long totalInstances, Pageable pageable) {
