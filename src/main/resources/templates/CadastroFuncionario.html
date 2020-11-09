@@ -13,9 +13,9 @@
   <section layout:fragment="conteudo">
     <h1 class="text-center my-3">Cadastro de Funcionário</h1>
 
-    <form action="" method="POST" th:object="${funcionario}">
-      <div th:replace="MensagemGeral"></div>
-      <div th:replace="MensagemErro"></div>
+    <form action="cadastrar" method="POST" th:object="${funcionario}">
+      <div th:replace="~{/parts/MensagemGeral}"></div>
+      <div th:replace="~{/parts/MensagemErro}"></div>
 
       <input type="hidden" th:field="*{id}" />
 
@@ -114,7 +114,7 @@
         </li>
       </ul>
       <div class="d-flex my-3">
-        <button class="btn btn-primary mx-auto" type="submit">Cadastrar</button>
+        <button class="btn btn-primary mx-auto" type="submit">Salvar</button>
       </div>
     </form>
   </section>

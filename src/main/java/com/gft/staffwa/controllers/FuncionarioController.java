@@ -10,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -82,6 +83,15 @@ public class FuncionarioController {
 			errors.rejectValue("", null, e.getMessage());
 			return CADASTRO_FUNCIONARIO;
 		}
+	}
+
+	@GetMapping("{id}")
+	public ModelAndView editar(@PathVariable("id") Funcionario funcionario) {
+
+		ModelAndView mv = new ModelAndView(CADASTRO_FUNCIONARIO);
+		mv.addObject(funcionario);
+
+		return mv;
 	}
 
 	@ModelAttribute("cargos")

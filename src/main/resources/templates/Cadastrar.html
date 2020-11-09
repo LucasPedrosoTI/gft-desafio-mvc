@@ -14,7 +14,7 @@
     <h1>Cadastrar</h1>
 
     <form th:action="@{/usuarios/novo}" method="post" th:object="${usuario}">
-      <div th:replace="MensagemErro"></div>
+      <div th:replace="~{/parts/MensagemErro}"></div>
       <input type="hidden" th:field="*{id}" />
 
       <p class="form-group">
