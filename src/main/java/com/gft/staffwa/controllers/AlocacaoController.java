@@ -11,6 +11,7 @@ import com.gft.staffwa.services.AlocacaoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/wa/alocacao")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class AlocacaoController {
 
   @Autowired

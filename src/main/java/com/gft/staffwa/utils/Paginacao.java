@@ -16,11 +16,7 @@ public class Paginacao {
 
     List<Integer> nroPaginas = Optional.of(getListaDePaginas(pageable, totalPaginas)).orElse(new ArrayList<Integer>());
 
-    System.out.println(pageable);
-    System.out.println(nroPaginas);
-
     addObjectsToModel(mv, nroPaginas, pageable, rotaAtual);
-
   }
 
   private static List<Integer> getListaDePaginas(Pageable pageable, int totalPaginas) {

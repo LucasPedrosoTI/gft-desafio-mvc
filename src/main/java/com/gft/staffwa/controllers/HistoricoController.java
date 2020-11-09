@@ -10,6 +10,7 @@ import com.gft.staffwa.utils.Paginacao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/wa/historico")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class HistoricoController {
 
   @Autowired

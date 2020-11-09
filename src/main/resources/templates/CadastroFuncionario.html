@@ -91,8 +91,11 @@
         </div>
       </div>
 
-      <ul>
-        <li th:each="tecnologia : ${tecnologias}">
+      <ul class="row">
+        <li
+          class="col-6 col-md-4 col-xl-3 my-1"
+          th:each="tecnologia : ${tecnologias}"
+        >
           <div class="custom-control custom-switch">
             <input
               type="checkbox"
@@ -110,10 +113,8 @@
           </div>
         </li>
       </ul>
-      <div class="d-flex">
-        <button class="btn btn-primary mx-auto mb-5" type="submit">
-          Cadastrar
-        </button>
+      <div class="d-flex my-3">
+        <button class="btn btn-primary mx-auto" type="submit">Cadastrar</button>
       </div>
     </form>
   </section>

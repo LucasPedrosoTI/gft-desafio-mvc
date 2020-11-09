@@ -1,11 +1,31 @@
-INSERT INTO tecnologia (id, nome)
-VALUES (1, "Java"),
-  (2, "JavaScript"),
-  (3, "SQL"),
-  (4, "HTML"),
-  (5, "CSS");
+INSERT INTO usuario (admin, email, senha)
+VALUES (
+    1,
+    "admin@gft.com",
+    "$2a$10$ZJJEee5s0D9GoVLxHElZgub3/y7FiXjdmgOrW2YnV8l9I4nJksybm"
+  );
+INSERT INTO tecnologia (nome)
+VALUES ("JavaScript"),
+  ("Python"),
+  ("Java"),
+  ("PHP"),
+  ("C#"),
+  ("C++"),
+  ("Ruby"),
+  ("CSS"),
+  ("TypeScript"),
+  ("C"),
+  ("Swift"),
+  ("Objective-C"),
+  ("Scala"),
+  ("R"),
+  ("Go"),
+  ("Shell"),
+  ("PowerShell"),
+  ("Perl"),
+  ("Kotlin"),
+  ("Haskell");
 INSERT INTO unidades_gft (
-    id,
     cep,
     cidade,
     endereco,
@@ -14,7 +34,6 @@ INSERT INTO unidades_gft (
     telefone
   )
 VALUES (
-    1,
     "06454000",
     "Barueri",
     "Alameda Rio Negro, n° 585 Ed. Padauiri, 10° andar",
@@ -23,7 +42,6 @@ VALUES (
     "1121763253"
   ),
   (
-    2,
     "80230010",
     "Rebouças",
     "Av. Sete de Setembro, 2451 Torre Trinity Corporate 6º andar",
@@ -32,7 +50,6 @@ VALUES (
     "4140095700"
   ),
   (
-    3,
     "18095450",
     "Jardim Sta. Rosália",
     "Av. São Francisco, 98",
@@ -41,7 +58,6 @@ VALUES (
     "1121763553"
   );
 INSERT INTO vaga (
-    id,
     codigo_vaga,
     data_de_abertura,
     descricao_vaga,
@@ -49,20 +65,18 @@ INSERT INTO vaga (
     qtd_vagas
   )
 VALUES (
-    1,
     "#ORIG2020",
     "2020-11-04",
     "DESENVOLVEDOR BACK END JAVA",
     "Banco Original",
-    2
+    10
   ),
   (
-    2,
     "#SANT2020",
     "2020-11-06",
     "ANALISTA DE TESTES",
     "Santander",
-    2
+    10
   );
 INSERT INTO vaga_tecnologia (vaga_id, tecnologia_id)
 VALUES (1, 1),
@@ -70,7 +84,6 @@ VALUES (1, 1),
   (2, 2),
   (2, 4);
 INSERT INTO funcionario (
-    id,
     nome,
     cargo,
     matricula,
@@ -79,7 +92,6 @@ INSERT INTO funcionario (
     local_de_trabalho_id
   )
 VALUES (
-    1,
     "João",
     "DESENVOLVEDOR_BACK",
     "0123456",
@@ -88,10 +100,33 @@ VALUES (
     1
   ),
   (
-    2,
     "José",
     "ESTAGIARIO",
     "0123457",
+    "2020-11-04",
+    "2020-11-19",
+    2
+  ),
+  (
+    "José",
+    "ESTAGIARIO",
+    "0123458",
+    "2020-11-04",
+    "2020-11-19",
+    3
+  ),
+  (
+    "José",
+    "ESTAGIARIO",
+    "0123459",
+    "2020-11-04",
+    "2020-11-19",
+    1
+  ),
+  (
+    "José",
+    "ESTAGIARIO",
+    "0123460",
     "2020-11-04",
     "2020-11-19",
     1
