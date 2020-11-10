@@ -16,6 +16,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -74,6 +75,15 @@ public class VagaController {
       errors.rejectValue("", null, e.getMessage());
       return CADASTRO_VAGA;
     }
+  }
+
+  @GetMapping("{id}")
+  public ModelAndView editar(@PathVariable("id") Vaga vaga) {
+
+    ModelAndView mv = new ModelAndView(CADASTRO_VAGA);
+    mv.addObject(vaga);
+
+    return mv;
   }
 
   @ModelAttribute("tecnologias")

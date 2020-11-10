@@ -34,7 +34,7 @@ public class UsuarioController {
     return mv;
   }
 
-  @PostMapping("/usuarios/novo")
+  @PostMapping("/cadastrar")
   public String salvar(HttpServletRequest request, @Validated Usuario usuario, Errors errors,
       RedirectAttributes attributes) {
     if (errors.hasErrors()) {

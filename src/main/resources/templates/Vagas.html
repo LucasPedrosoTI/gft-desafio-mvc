@@ -29,6 +29,7 @@
             <th>Abertura da Vaga</th>
             <th>Qtd Vagas</th>
             <th>Código da vaga</th>
+            <th sec:authorize="hasRole('ADMIN')"></th>
           </tr>
         </thead>
         <tbody>
@@ -54,6 +55,33 @@
             <td th:text="${{vaga.qtdVagas}}"></td>
 
             <td th:text="${{vaga.codigoVaga}}"></td>
+
+            <td
+              sec:authorize="hasRole('ADMIN')"
+              class="text-center d-flex justify-content-around"
+            >
+              <a
+                class="btn btn-link"
+                th:href="@{/wa/{rotaAtual}/{id}(id=${vaga.id}, rotaAtual = ${rotaAtual})}"
+                title="Editar"
+                rel="tooltip"
+                data-placement="top"
+              >
+                <i class="fas fa-pencil-alt"></i>
+              </a>
+
+              <a
+                class="btn btn-link"
+                data-toggle="modal"
+                data-target="#confirmacaoExclusaoModal"
+                th:attr="data-id=${vaga.id}, data-nome=${vaga.descricaoVaga}"
+                title="Excluir"
+                rel="tooltip"
+                data-placement="top"
+              >
+                <i class="fas fa-trash-alt"></i>
+              </a>
+            </td>
           </tr>
           <tr>
             <td colspan="6" th:if="${#lists.isEmpty(vagas)}">
