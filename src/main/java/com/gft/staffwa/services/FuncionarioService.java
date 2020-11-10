@@ -47,4 +47,8 @@ public class FuncionarioService {
 		return funcionarios.countByAlocacaoIsNotNull();
 	}
 
+	public void deletar(Long id) {
+		funcionarios.deleteById(id);
+	}
+
 }

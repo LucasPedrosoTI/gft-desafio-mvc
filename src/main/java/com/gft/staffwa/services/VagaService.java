@@ -36,4 +36,14 @@ public class VagaService {
     return vagas.countByQtdVagasGreaterThan(num);
   }
 
+  public void deletar(Vaga vaga) {
+
+    Vaga vagaTarget = vagas.getOne(vaga.getId());
+
+    vagaTarget.setQtdVagas(0);
+
+    vagas.save(vagaTarget);
+
+  }
+
 }

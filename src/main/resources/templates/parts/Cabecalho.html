@@ -20,7 +20,7 @@
       <li class="nav-item" th:classappend="${menuVagas} ? active">
         <a class="nav-link" href="/wa/vagas">Vagas</a>
       </li>
-      <div sec:authorize="hasRole('ADMIN')" class="d-flex">
+      <div sec:authorize="hasRole('ADMIN')" class="d-lg-flex">
         <li class="nav-item" th:classappend="${menuAlocacao} ? active">
           <a class="nav-link" href="/wa/alocacao">Alocação</a>
         </li>

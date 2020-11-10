@@ -48,12 +48,12 @@
             </a>
           </li>
 
-          <li th:each="nrPagina : ${nroPaginas}" class="page-item">
+          <li th:each="nroPagina : ${nroPaginas}" class="page-item">
             <a
               class="page-link"
-              th:classappend="${paginaAtual == nrPagina - 1} ? page-active"
-              th:href="@{/wa/{rotaAtual}(page=${nrPagina - 1}, rotaAtual=${rotaAtual})}"
-              th:text="${nrPagina}"
+              th:classappend="${paginaAtual == nroPagina - 1} ? page-active"
+              th:href="@{/wa/{rotaAtual}(page=${nroPagina - 1}, rotaAtual=${rotaAtual})}"
+              th:text="${nroPagina}"
             ></a>
           </li>
 

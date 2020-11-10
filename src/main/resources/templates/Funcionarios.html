@@ -84,14 +84,14 @@
             </td>
           </tr>
           <tr>
-            <td colspan="5" th:if="${#lists.isEmpty(funcionarios)}">
+            <td colspan="6" th:if="${#lists.isEmpty(funcionarios)}">
               Nenhum funcionário foi encontrado
             </td>
           </tr>
         </tbody>
       </table>
 
-      <div th:replace="~{/parts/AdminBotao}"></div>
+      <div th:replace="~{/parts/AdminNavInferior}"></div>
     </section>
   </body>
 </html>

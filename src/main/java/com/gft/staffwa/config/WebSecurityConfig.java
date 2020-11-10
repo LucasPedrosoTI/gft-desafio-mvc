@@ -40,15 +40,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .anyRequest().authenticated()
       .and()
       .formLogin().loginPage("/login").permitAll()
-        .usernameParameter("email")
-        .passwordParameter("senha")
-        .defaultSuccessUrl("/", true).failureUrl("/login?erro=true")
-        .and()
-        .logout()
-          .invalidateHttpSession(true)
-          .logoutSuccessUrl("/login?logout=true").permitAll()
-          .logoutUrl("/logout")
-          .deleteCookies("JSESSIONID");
+      .usernameParameter("email")
+      .passwordParameter("senha")
+      .defaultSuccessUrl("/", true).failureUrl("/login?erro=true")
+      .and()
+      .logout()
+        .invalidateHttpSession(true)
+        .logoutSuccessUrl("/login?logout=true").permitAll()
+        .logoutUrl("/logout")
+        .deleteCookies("JSESSIONID");
   //@formatter:on
   }
 

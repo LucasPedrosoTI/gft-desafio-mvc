@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -84,6 +85,16 @@ public class VagaController {
     mv.addObject(vaga);
 
     return mv;
+  }
+
+  @DeleteMapping("{id}")
+  public String deletar(Vaga vaga, RedirectAttributes attributes) {
+
+    vagaService.deletar(vaga);
+
+    attributes.addFlashAttribute("mensagem", "Vaga excluída com sucesso");
+
+    return "redirect:/wa/vagas";
   }
 
   @ModelAttribute("tecnologias")
