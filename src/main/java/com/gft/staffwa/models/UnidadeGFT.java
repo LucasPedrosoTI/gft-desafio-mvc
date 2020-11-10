@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
@@ -30,7 +29,6 @@ public class UnidadeGFT {
 	private String nome;
 
 	@NotBlank(message = "CEP é obrigatório")
-	@Pattern(regexp = "[\\d]{8}")
 	private String cep;
 
 	@NotBlank(message = "Cidade é obrigatório")

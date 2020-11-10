@@ -21,4 +21,15 @@ public class UnidadeGftService {
   public List<UnidadeGFT> findAll() {
     return unidadesGft.findAll();
   }
+
+  public void salvar(UnidadeGFT unidadeGft) {
+    try {
+      unidadesGft.save(unidadeGft);
+    } catch (Exception e) {
+      throw new IllegalArgumentException(e.getMessage());
+    }
+  }
+
+  public void deletar(Long id) {
+  }
 }
