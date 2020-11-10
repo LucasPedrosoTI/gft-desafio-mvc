@@ -28,6 +28,19 @@
         <li class="nav-item" th:classappend="${menuHistorico} ? active">
           <a class="nav-link" href="/wa/historico">Histórico</a>
         </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-plus-square"></i>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/wa/tecnologias/cadastrar">Nova Tecnologia</a>
+            <a class="dropdown-item" href="/wa/unidades/cadastrar">Nova Unidade</a>
+            <a class="dropdown-item" href="/wa/funcionarios/cadastrar">Novo Funcionário</a>
+            <a class="dropdown-item" href="/wa/vagas/cadastrar">Nova Vaga</a>
+          </div>
+        </li>
       </div>
       <div sec:authorize="isAuthenticated()">
       <li class="nav-item">

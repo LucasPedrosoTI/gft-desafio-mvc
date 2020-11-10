@@ -18,4 +18,16 @@ public class TecnologiaService {
     return tecnologias.findAll();
   }
 
+  public void salvar(Tecnologia tecnologia) {
+    try {
+      tecnologias.save(tecnologia);
+    } catch (Exception e) {
+      throw new IllegalArgumentException(e.getMessage());
+    }
+  }
+
+  public void deletar(Long id) {
+    tecnologias.deleteById(id);
+  }
+
 }
