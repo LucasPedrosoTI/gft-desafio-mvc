@@ -46,4 +46,8 @@ public class VagaService {
 
   }
 
+  public List<Object[]> groupAndCountByData() {
+    return vagas.groupAndCountByData();
+  }
+
 }

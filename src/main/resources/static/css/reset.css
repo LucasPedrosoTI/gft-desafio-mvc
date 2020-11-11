@@ -9,6 +9,10 @@ html {
   height: 100%;
 }
 
+body {
+  background-color: #e5e5e5;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -16,6 +20,10 @@ ul {
 
 li {
   list-style-type: none;
+}
+
+a {
+  color: inherit;
 }
 
 .navbar {
@@ -50,4 +58,8 @@ li {
 
 .dropdown-menu {
   left: -145px;
+}
+
+.text-primary {
+  color: #1f4fa3 !important;
 }

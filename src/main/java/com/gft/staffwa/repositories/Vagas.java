@@ -16,4 +16,8 @@ public interface Vagas extends JpaRepository<Vaga, Long> {
   public Long countByQtdVagasGreaterThan(int num);
 
   public List<Vaga> findByQtdVagasGreaterThan(int num);
+
+  @Query("select v.dataDeAbertura, count(v.dataDeAbertura) from Vaga v "
+      + "group by v.dataDeAbertura order by v.dataDeAbertura asc ")
+  public List<Object[]> groupAndCountByData();
 }

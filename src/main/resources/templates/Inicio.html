@@ -7,22 +7,33 @@
   layout:decorate="~{LayoutPadrao}"
 >
   <head>
-    <title>Início</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="/js/chart.js"></script>
+    <title>Gerenciador de Funcionários em WA</title>
   </head>
 
   <body>
     <section layout:fragment="conteudo">
       <div class="container h-100">
-        <div
-          class="d-flex flex-column justify-content-center align-items-center h-100"
-        >
-          <h1 class="text-center my-4">
-            <strong> Gerenciador de Funcionários em WA </strong>
-          </h1>
+        <h5 class="my-4">Dashboard - Gerenciador de Funcionários em WA</h5>
+        <div class="d-flex justify-content-around">
+          <div
+            th:replace="parts/DashboardCard :: card(header='Funcionários', icon='fa-user-clock', data=${qtdFuncionariosEmWA}, link='funcionarios')"
+          ></div>
 
-          <a href="/wa/funcionarios" class="btn btn-primary w-25">Iniciar</a>
+          <div
+            th:replace="parts/DashboardCard :: card(header='Vagas', icon='fa-list-alt', data=${qtdVagas}, link='vagas', color='text-info')"
+          ></div>
+
+          <div
+            th:replace="parts/DashboardCard :: card(header='Alocados últimos 7 dias', icon='fa-calendar-check', data=${qtsAlocados7Dias}, link='alocacao', color='text-success')"
+          ></div>
         </div>
+        <!-- <a href="/wa/funcionarios" class="btn btn-primary w-25">Iniciar</a> -->
+        <div id="myPieChart"></div>
       </div>
     </section>
+
+    <script></script>
   </body>
 </html>

@@ -1,7 +1,9 @@
 package com.gft.staffwa.services;
 
+import java.util.Date;
 import java.util.List;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Pageable;
@@ -45,6 +47,17 @@ public class FuncionarioService {
 
 	public Long countByAlocacaoIsNotNull() {
 		return funcionarios.countByAlocacaoIsNotNull();
+	}
+
+	public Long countByDataDeAlocacaoAfter() {
+
+		Date data7diasAtras = new DateTime().minusDays(7).toDate();
+
+		return funcionarios.countByDataDeAlocacaoAfter(data7diasAtras);
+	}
+
+	public List<Object[]> groupAndCountByTerminoWa() {
+		return funcionarios.groupAndCountByTerminoWa();
 	}
 
 	public void deletar(Long id) {
