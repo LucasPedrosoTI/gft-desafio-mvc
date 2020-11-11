@@ -3,14 +3,15 @@ package com.gft.staffwa.controllers;
 import java.util.List;
 
 import com.gft.staffwa.models.Funcionario;
+import com.gft.staffwa.models.Tecnologia;
 import com.gft.staffwa.models.Vaga;
 import com.gft.staffwa.repositories.Alocacao;
 import com.gft.staffwa.repositories.Funcionarios;
+import com.gft.staffwa.repositories.Tecnologias;
 import com.gft.staffwa.repositories.Vagas;
 import com.gft.staffwa.services.AlocacaoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -34,6 +35,9 @@ public class AlocacaoController {
 
   @Autowired
   Vagas vagas;
+
+  @Autowired
+  Tecnologias tecnologias;
 
   @GetMapping
   public ModelAndView renderAlocacao() {
@@ -61,7 +65,7 @@ public class AlocacaoController {
   }
 
   @ModelAttribute("funcionarios")
-  public List<Funcionario> funcionarios(Pageable pageable) {
+  public List<Funcionario> funcionarios() {
     return funcionarios.findByAlocacaoIsNull();
   }
 
@@ -73,6 +77,11 @@ public class AlocacaoController {
   @ModelAttribute("menuAlocacao")
   public boolean menuAlocacao() {
     return true;
+  }
+
+  @ModelAttribute("tecnologias")
+  public List<Tecnologia> tecnologias() {
+    return tecnologias.findAll();
   }
 
 }

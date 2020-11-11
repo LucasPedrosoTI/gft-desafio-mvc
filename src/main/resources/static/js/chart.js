@@ -15,6 +15,10 @@ async function drawChart() {
   const response = await fetch(`${baseUrl}/funcionarios/termino-wa`);
   const funcionarios = await response.json();
 
+  if (funcionarios.length < 2) {
+    return;
+  }
+
   const responseVagas = await fetch(`${baseUrl}/vagas/por-data`);
   const vagas = await responseVagas.json();
 
@@ -34,5 +38,6 @@ async function drawChart() {
   const chart = new google.visualization.LineChart(
     document.getElementById("myPieChart")
   );
+
   chart.draw(data, options);
 }
