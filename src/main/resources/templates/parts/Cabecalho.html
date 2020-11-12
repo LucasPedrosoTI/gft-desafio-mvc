@@ -45,7 +45,8 @@
       <div sec:authorize="isAuthenticated()">
       <li class="nav-item">
         <form th:action="@{/logout}" method="post">
-          <button class="btn nav-link" type="submit">
+          <button class="btn nav-link" type="submit" title="Sair"
+          rel="tooltip">
             <i class="fas fa-sign-out-alt"></i>
           </button>
         </form>

@@ -32,7 +32,7 @@ VALUES ("JavaScript"),
   ("Haskell");
 INSERT INTO level (nome)
 VALUES ("L0"),
-("L1"),
+  ("L1"),
   ("L2"),
   ("L3"),
   ("L4"),
@@ -107,7 +107,9 @@ INSERT INTO funcionario (
     inicio_wa,
     termino_wa,
     local_de_trabalho_id,
-    level_id
+    level_id,
+    data_de_alocacao,
+    alocacao_id
   )
 VALUES (
     "João",
@@ -116,7 +118,9 @@ VALUES (
     "2020-11-04",
     "2020-11-19",
     1,
-    1
+    1,
+    null,
+    null
   ),
   (
     "José",
@@ -125,7 +129,9 @@ VALUES (
     "2020-11-05",
     "2020-11-20",
     2,
-    2
+    2,
+    null,
+    null
   ),
   (
     "José",
@@ -134,7 +140,9 @@ VALUES (
     "2020-11-05",
     "2020-11-20",
     3,
-    3
+    3,
+    null,
+    null
   ),
   (
     "José",
@@ -143,7 +151,9 @@ VALUES (
     "2020-11-06",
     "2020-11-21",
     1,
-    4
+    4,
+    null,
+    null
   ),
   (
     "José",
@@ -152,7 +162,9 @@ VALUES (
     "2020-11-07",
     "2020-11-22",
     1,
-    5
+    5,
+    null,
+    null
   ),
   (
     "José",
@@ -161,7 +173,9 @@ VALUES (
     "2020-11-07",
     "2020-11-22",
     1,
-    6
+    6,
+    null,
+    null
   ),
   (
     "José",
@@ -170,7 +184,20 @@ VALUES (
     "2020-11-07",
     "2020-11-22",
     1,
-    7
+    7,
+    "2020-11-08",
+    1
+  ),
+  (
+    "João",
+    "ESTAGIARIO",
+    "0123463",
+    "2020-11-07",
+    "2020-11-22",
+    1,
+    7,
+    "2020-11-10",
+    2
   );
 INSERT INTO funcionario_tecnologia (funcionario_id, tecnologia_id)
 VALUES (1, 1),
