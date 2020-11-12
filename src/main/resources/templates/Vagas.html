@@ -23,13 +23,38 @@
       >
         <thead>
           <tr>
-            <th>Projeto</th>
-            <th>Descrição vaga</th>
-            <th>Level</th>
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='projeto', text='Projeto')"
+            >
+              Projeto
+            </th>
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='descricaoVaga', text='Descrição vaga')"
+            >
+              Descrição vaga
+            </th>
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='level', text='Level')"
+            >
+              Level
+            </th>
             <th>Tecnologias</th>
-            <th>Abertura da Vaga</th>
-            <th>Qtd Vagas</th>
-            <th>Código da vaga</th>
+            <th
+              th
+              th:replace="parts/SortableTdLink :: th(sort='dataDeAbertura', text='Abertura da Vaga')"
+            >
+              Abertura da Vaga
+            </th>
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='qtdVagas', text='Qtd Vagas')"
+            >
+              Qtd Vagas
+            </th>
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='codigoVaga', text='Código da vaga')"
+            >
+              Código da vaga
+            </th>
             <th sec:authorize="hasRole('ADMIN')"></th>
           </tr>
         </thead>

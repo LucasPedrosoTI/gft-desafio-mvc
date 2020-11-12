@@ -23,12 +23,34 @@
       >
         <thead>
           <tr>
-            <th>Nome</th>
-            <th>Cargo</th>
-            <th>Level</th>
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='nome', text='Nome')"
+            ></th>
+
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='cargo', text='Cargo')"
+            ></th>
+
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='level', text='Level')"
+            >
+              Level
+            </th>
+
             <th>Tecnologias</th>
-            <th>Inicio WA</th>
-            <th>Previsão término WA</th>
+
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='inicioWa', text='Início WA')"
+            >
+              Inicio WA
+            </th>
+
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='terminoWa', text='Término WA')"
+            >
+              Previsão término WA
+            </th>
+
             <th sec:authorize="hasRole('ADMIN')"></th>
           </tr>
         </thead>

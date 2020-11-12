@@ -58,7 +58,6 @@ public class FuncionarioController {
 		Paginacao.setPaginacao(mv, "funcionarios", pageable, funcionarioService.countByAlocacaoIsNull());
 
 		mv.addObject("funcionarios", funcionarios);
-
 		return mv;
 	}
 

@@ -21,11 +21,31 @@
       >
         <thead>
           <tr>
-            <th>Funcionário</th>
-            <th>Projeto</th>
-            <th>Código da Vaga</th>
-            <th>Início WA</th>
-            <th>Início Alocação</th>
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='nome', text='Funcionário')"
+            >
+              Funcionário
+            </th>
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='alocacao.projeto', text='Projeto')"
+            >
+              Projeto
+            </th>
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='alocacao.codigoVaga', text='Código da Vaga')"
+            >
+              Código da Vaga
+            </th>
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='inicioWa', text='Início WA')"
+            >
+              Início WA
+            </th>
+            <th
+              th:replace="parts/SortableTdLink :: th(sort='dataDeAlocacao', text='Data de Alocação')"
+            >
+              Início Alocação
+            </th>
           </tr>
         </thead>
         <tbody>

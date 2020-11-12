@@ -36,10 +36,6 @@ async function drawChart() {
   data2.addColumn("number", "Quantidade Vagas");
   data2.addRows(normalizarDatas(vagas));
 
-  var dateRange = data2.getColumnRange(0);
-  var mindate = dateRange.min;
-  var maxdate = dateRange.max;
-
   const options = {
     title: "Próximos Vencimentos de WA",
     legend: { position: "bottom" },
@@ -65,14 +61,6 @@ async function drawChart() {
     },
     hAxis: {
       format: "dd/MM/yyyy",
-      // viewWindow: {
-      //   min: mindate,
-      //   max: maxdate,
-      // },
-      // ticks: data.getDistinctValues(0),
-      // gridlines: {
-      //   count: -1,
-      // },
     },
   };
 
