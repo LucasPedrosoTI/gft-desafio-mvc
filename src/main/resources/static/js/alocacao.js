@@ -1,6 +1,12 @@
 let funcionarioIsVisible = false;
 let vagaIsVisible = false;
 
+if ($(window).width() < 768) {
+  $("#icon")
+    .removeClass("fa-arrow-circle-right")
+    .addClass("fa-arrow-circle-down");
+}
+
 $("#f-card").hide();
 $("#v-card").hide();
 $("#alocar-icon").hide();
@@ -53,7 +59,7 @@ function getOptionText(obj) {
 
 $("#funcionario").change(function () {
   if (this.value.length == 0) {
-    $("#f-card").toggle("slow");
+    $("#f-card").hide("slow");
     funcionarioIsVisible = false;
     toggleAlocarIconVisible();
     return;
@@ -63,6 +69,7 @@ $("#funcionario").change(function () {
   const unidade = getOptionData(this, "unidade");
   const cargo = getOptionData(this, "cargo");
   const techsRaw = getOptionData(this, "tecnologias");
+  const level = getOptionData(this, "level");
   const techIds = techsToArray(techsRaw);
   const tecnologias = fromIdToNome(techIds);
 
@@ -70,8 +77,9 @@ $("#funcionario").change(function () {
   $("#f-unidade").text(unidade);
   $("#f-cargo").text(cargo);
   $("#f-tecnologias").text(tecnologias);
+  $("#f-level").text(level);
 
-  $("#f-card").toggle("slow");
+  $("#f-card").show("slow");
   funcionarioIsVisible = true;
   toggleAlocarIconVisible();
 });
@@ -80,7 +88,7 @@ $("#vaga").change(function () {
   toggleAlocarIconVisible();
 
   if (this.value.length == 0) {
-    $("#v-card").toggle("slow");
+    $("#v-card").hide("slow");
     vagaIsVisible = false;
     toggleAlocarIconVisible();
     return;
@@ -88,6 +96,7 @@ $("#vaga").change(function () {
 
   const projeto = getOptionData(this, "projeto");
   const codigo = getOptionData(this, "codigo");
+  const level = getOptionData(this, "level");
   const descricao = getOptionText(this);
   const techsRaw = getOptionData(this, "tecnologias");
   const techIds = techsToArray(techsRaw);
@@ -97,8 +106,9 @@ $("#vaga").change(function () {
   $("#v-codigo").text(codigo);
   $("#v-descricao").text(descricao);
   $("#v-tecnologias").text(tecnologias);
+  $("#v-level").text(level);
 
-  $("#v-card").toggle("slow");
+  $("#v-card").show("slow");
   vagaIsVisible = true;
   toggleAlocarIconVisible();
 });

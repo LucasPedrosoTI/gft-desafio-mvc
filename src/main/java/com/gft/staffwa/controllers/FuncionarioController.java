@@ -20,9 +20,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gft.staffwa.models.EnumCargo;
 import com.gft.staffwa.models.Funcionario;
+import com.gft.staffwa.models.Level;
 import com.gft.staffwa.models.Tecnologia;
 import com.gft.staffwa.models.UnidadeGFT;
 import com.gft.staffwa.repositories.Filter;
+import com.gft.staffwa.repositories.Levels;
 import com.gft.staffwa.services.FuncionarioService;
 import com.gft.staffwa.services.TecnologiaService;
 import com.gft.staffwa.services.UnidadeGftService;
@@ -42,6 +44,9 @@ public class FuncionarioController {
 
 	@Autowired
 	private TecnologiaService tecnologiaService;
+
+	@Autowired
+	private Levels levels;
 
 	@GetMapping
 	public ModelAndView renderFuncionarios(@ModelAttribute("filtro") Filter filtro, Pageable pageable) {
@@ -129,6 +134,11 @@ public class FuncionarioController {
 	@ModelAttribute("locais")
 	public List<UnidadeGFT> locais() {
 		return this.unidadeGftService.findAll();
+	}
+
+	@ModelAttribute("levels")
+	public List<Level> levels() {
+		return levels.findAll();
 	}
 
 }

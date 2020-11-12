@@ -2,9 +2,11 @@ package com.gft.staffwa.controllers;
 
 import java.util.List;
 
+import com.gft.staffwa.models.Level;
 import com.gft.staffwa.models.Tecnologia;
 import com.gft.staffwa.models.Vaga;
 import com.gft.staffwa.repositories.Filter;
+import com.gft.staffwa.repositories.Levels;
 import com.gft.staffwa.services.TecnologiaService;
 import com.gft.staffwa.services.VagaService;
 import com.gft.staffwa.utils.Paginacao;
@@ -35,6 +37,9 @@ public class VagaController {
 
   @Autowired
   TecnologiaService tecnologiaService;
+
+  @Autowired
+  Levels levels;
 
   @GetMapping
   public ModelAndView renderVagas(@ModelAttribute("filtro") Filter filtro, Pageable pageable) {
@@ -69,7 +74,7 @@ public class VagaController {
 
       this.vagaService.salvar(vaga);
 
-      attributes.addFlashAttribute("mensagem", "Funcionário salvo com sucesso!");
+      attributes.addFlashAttribute("mensagem", "Vaga salva com sucesso!");
 
       return "redirect:/wa/vagas";
 
@@ -111,5 +116,10 @@ public class VagaController {
   @ModelAttribute("menuVagas")
   public boolean menuVagas() {
     return true;
+  }
+
+  @ModelAttribute("levels")
+  public List<Level> levels() {
+    return levels.findAll();
   }
 }

@@ -30,7 +30,7 @@
               th:each="funcionario : ${funcionarios}"
               th:value="${funcionario.id}"
               th:text="${funcionario.nome}"
-              th:attr="data-unidade=${funcionario.localDeTrabalho.nome}, data-cargo=${funcionario.cargo.descricao}, data-tecnologias=${{funcionario.tecnologias}}"
+              th:attr="data-unidade=${funcionario.localDeTrabalho.nome}, data-cargo=${funcionario.cargo.descricao}, data-tecnologias=${{funcionario.tecnologias}}, data-level=${funcionario.level.nome}"
             ></option>
             <option th:value="null" th:if="${#lists.isEmpty(funcionarios)}">
               Nenhum funcionário encontrado
@@ -45,7 +45,7 @@
               th:each="vaga : ${vagas}"
               th:value="${vaga.id}"
               th:text="${vaga.descricaoVaga}"
-              th:attr="data-projeto=${vaga.projeto}, data-codigo=${vaga.codigoVaga}, data-tecnologias=${{vaga.tecnologias}}"
+              th:attr="data-projeto=${vaga.projeto}, data-codigo=${vaga.codigoVaga}, data-tecnologias=${{vaga.tecnologias}}, data-level=${vaga.level.nome}"
             ></option>
             <option th:value="null" th:if="${#lists.isEmpty(vagas)}">
               Nenhuma vaga encontrada
@@ -54,10 +54,13 @@
         </div>
 
         <div
-          class="d-flex justify-content-around align-items-center"
+          class="d-flex flex-column flex-md-row justify-content-around align-items-center"
           id="alocacao-div"
         >
-          <div class="card bg-light mb-3 font-weight-bold w-25" id="f-card">
+          <div
+            class="card bg-light mb-3 font-weight-bold w-75 w-25-md"
+            id="f-card"
+          >
             <div class="card-header text-center">
               <h2>
                 <i class="fas fa-user-circle"></i>
@@ -78,6 +81,10 @@
                 >
               </p>
               <p>
+                <strong>Level:</strong>
+                <span class="font-weight-normal" id="f-level">L0</span>
+              </p>
+              <p>
                 <strong>Tecnologias:</strong>
                 <span class="font-weight-normal" id="f-tecnologias"
                   >Angular, Java</span
@@ -87,11 +94,11 @@
           </div>
 
           <div class="text-center font-weight-bold h2" id="alocar-icon">
-            <i class="fas fa-arrow-circle-right"></i>
+            <i id="icon" class="fas fa-arrow-circle-right"></i>
             <p>Alocar</p>
           </div>
 
-          <div class="card bg-light mb-3 font-weight-bold w-25" id="v-card">
+          <div class="card bg-light mb-3 font-weight-bold w-75" id="v-card">
             <div class="card-header text-center">
               <h2>
                 <i class="fas fa-house-user"></i>
@@ -109,6 +116,12 @@
                   Desenvolvedor Back End
                 </span>
               </p>
+
+              <p>
+                <strong>Level:</strong>
+                <span class="font-weight-normal" id="v-level"> L0 </span>
+              </p>
+
               <p>
                 <strong>Tecnologias:</strong>
                 <span class="font-weight-normal" id="v-tecnologias">

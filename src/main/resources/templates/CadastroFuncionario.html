@@ -58,6 +58,22 @@
       </div>
 
       <div class="form-group">
+        <label for="level">Level</label>
+        <select
+          th:field="*{level}"
+          class="form-control"
+          id="level"
+          th:classappend="${#fields.hasErrors('level')} ? is-invalid"
+        >
+          <option
+            th:each="level : ${levels}"
+            th:value="${level.id}"
+            th:text="${level.nome}"
+          ></option>
+        </select>
+      </div>
+
+      <div class="form-group">
         <label for="localDeTrabalho">Local De Trabalho</label>
         <select
           th:field="*{localDeTrabalho}"

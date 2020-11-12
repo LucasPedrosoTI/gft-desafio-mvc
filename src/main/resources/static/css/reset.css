@@ -63,3 +63,10 @@ a {
 .text-primary {
   color: #1f4fa3 !important;
 }
+
+@media (min-width: 768px) {
+  #f-card,
+  #v-card {
+    max-width: 30% !important;
+  }
+}

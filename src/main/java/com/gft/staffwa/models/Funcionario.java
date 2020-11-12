@@ -54,6 +54,10 @@ public class Funcionario {
 	@Temporal(TemporalType.DATE)
 	private Date terminoWa;
 
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
+	private Date dataDeAlocacao;
+
 	@ManyToMany
 	@JoinTable(name = "funcionario_tecnologia", joinColumns = @JoinColumn(name = "funcionario_id"), inverseJoinColumns = @JoinColumn(name = "tecnologia_id"))
 	private List<Tecnologia> tecnologias;
@@ -66,8 +70,8 @@ public class Funcionario {
 	@JoinColumn(name = "alocacao_id")
 	private Vaga alocacao;
 
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Temporal(TemporalType.DATE)
-	private Date dataDeAlocacao;
+	@ManyToOne
+	@JoinColumn(name = "level_id")
+	private Level level;
 
 }

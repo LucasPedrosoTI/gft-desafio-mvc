@@ -25,6 +25,7 @@
           <tr>
             <th>Projeto</th>
             <th>Descrição vaga</th>
+            <th>Level</th>
             <th>Tecnologias</th>
             <th>Abertura da Vaga</th>
             <th>Qtd Vagas</th>
@@ -37,6 +38,8 @@
             <td th:text="${vaga.projeto}"></td>
 
             <td th:text="${vaga.descricaoVaga}"></td>
+
+            <td th:text="${vaga.level.nome}"></td>
 
             <td>
               <strong th:if="${#lists.isEmpty(vaga.tecnologias)}"

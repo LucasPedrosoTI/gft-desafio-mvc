@@ -3,6 +3,11 @@ VALUES (
     1,
     "admin@gft.com",
     "$2a$10$ZJJEee5s0D9GoVLxHElZgub3/y7FiXjdmgOrW2YnV8l9I4nJksybm"
+  ),
+  (
+    0,
+    "lpst@gft.com",
+    "$2a$10$ZJJEee5s0D9GoVLxHElZgub3/y7FiXjdmgOrW2YnV8l9I4nJksybm"
   );
 INSERT INTO tecnologia (nome)
 VALUES ("JavaScript"),
@@ -25,6 +30,15 @@ VALUES ("JavaScript"),
   ("Perl"),
   ("Kotlin"),
   ("Haskell");
+INSERT INTO level (nome)
+VALUES ("L0"),
+("L1"),
+  ("L2"),
+  ("L3"),
+  ("L4"),
+  ("L5"),
+  ("L6"),
+  ("L7");
 INSERT INTO unidades_gft (
     cep,
     cidade,
@@ -62,21 +76,24 @@ INSERT INTO vaga (
     data_de_abertura,
     descricao_vaga,
     projeto,
-    qtd_vagas
+    qtd_vagas,
+    level_id
   )
 VALUES (
     "#ORIG2020",
     "2020-11-04",
     "DESENVOLVEDOR BACK END JAVA",
     "Banco Original",
-    10
+    10,
+    1
   ),
   (
     "#SANT2020",
     "2020-11-06",
     "ANALISTA DE TESTES",
     "Santander",
-    10
+    10,
+    2
   );
 INSERT INTO vaga_tecnologia (vaga_id, tecnologia_id)
 VALUES (1, 1),
@@ -89,7 +106,8 @@ INSERT INTO funcionario (
     matricula,
     inicio_wa,
     termino_wa,
-    local_de_trabalho_id
+    local_de_trabalho_id,
+    level_id
   )
 VALUES (
     "João",
@@ -97,6 +115,7 @@ VALUES (
     "0123456",
     "2020-11-04",
     "2020-11-19",
+    1,
     1
   ),
   (
@@ -105,6 +124,7 @@ VALUES (
     "0123457",
     "2020-11-05",
     "2020-11-20",
+    2,
     2
   ),
   (
@@ -113,6 +133,7 @@ VALUES (
     "0123458",
     "2020-11-05",
     "2020-11-20",
+    3,
     3
   ),
   (
@@ -121,7 +142,8 @@ VALUES (
     "0123459",
     "2020-11-06",
     "2020-11-21",
-    1
+    1,
+    4
   ),
   (
     "José",
@@ -129,23 +151,26 @@ VALUES (
     "0123460",
     "2020-11-07",
     "2020-11-22",
-    1
+    1,
+    5
   ),
   (
     "José",
     "ESTAGIARIO",
-    "0123460",
+    "0123461",
     "2020-11-07",
     "2020-11-22",
-    1
+    1,
+    6
   ),
   (
     "José",
     "ESTAGIARIO",
-    "0123460",
+    "0123462",
     "2020-11-07",
     "2020-11-22",
-    1
+    1,
+    7
   );
 INSERT INTO funcionario_tecnologia (funcionario_id, tecnologia_id)
 VALUES (1, 1),

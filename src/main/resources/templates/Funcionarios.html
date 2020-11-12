@@ -25,6 +25,7 @@
           <tr>
             <th>Nome</th>
             <th>Cargo</th>
+            <th>Level</th>
             <th>Tecnologias</th>
             <th>Inicio WA</th>
             <th>Previsão término WA</th>
@@ -36,6 +37,8 @@
             <td th:text="${funcionario.nome}"></td>
 
             <td th:text="${funcionario.cargo.descricao}"></td>
+
+            <td th:text="${funcionario.level.nome}"></td>
 
             <td>
               <strong th:if="${#lists.isEmpty(funcionario.tecnologias)}"
