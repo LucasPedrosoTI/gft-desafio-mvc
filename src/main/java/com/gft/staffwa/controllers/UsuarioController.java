@@ -53,6 +53,11 @@ public class UsuarioController {
 
   }
 
+  @GetMapping("/accessDenied")
+  public String acessoNegado() {
+    return "AcessoNegado";
+  }
+
   @PostMapping("/login")
   public String logar() throws Exception {
     return "redirect:/";

@@ -33,6 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     //@formatter:off
     http.csrf().disable()
       .authorizeRequests().antMatchers("/cadastrar").permitAll()
+      .antMatchers("/acessoNegado.jsp").permitAll()
       .antMatchers("/usuarios/novo").permitAll()
       .antMatchers("/**/cadastrar").hasRole("ADMIN")
       .antMatchers("/**/funcionarios/{\\d+}").hasRole("ADMIN")
@@ -48,7 +49,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .invalidateHttpSession(true)
         .logoutSuccessUrl("/login?logout=true").permitAll()
         .logoutUrl("/logout")
-        .deleteCookies("JSESSIONID");
+        .deleteCookies("JSESSIONID")
+      .and()
+	      .exceptionHandling().accessDeniedPage("/accessDenied");
   //@formatter:on
   }
 
