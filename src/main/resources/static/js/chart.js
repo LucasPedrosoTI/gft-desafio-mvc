@@ -22,9 +22,6 @@ async function drawChart() {
   const responseVagas = await fetch(`${baseUrl}/vagas/por-data`);
   const vagas = await responseVagas.json();
 
-  console.log(vagas);
-  console.log(normalizarDatas(vagas));
-
   const data = new google.visualization.DataTable();
   const data2 = new google.visualization.DataTable();
 
