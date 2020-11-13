@@ -6,8 +6,8 @@ VALUES (
   ),
   (
     0,
-    "lpst@gft.com",
-    "$2a$10$ZJJEee5s0D9GoVLxHElZgub3/y7FiXjdmgOrW2YnV8l9I4nJksybm"
+    "user@gft.com",
+    "$2a$10$I1q1psMlBET2/bJUxIjmGOitfazqkyyAWDRfemvhIRETYj/jHHk72"
   );
 INSERT INTO tecnologia (nome)
 VALUES ("JavaScript"),
@@ -94,12 +94,30 @@ VALUES (
     "Santander",
     10,
     2
+  ),
+  (
+    "#ITAU2020",
+    "2020-11-06",
+    "SCRUM MASTER",
+    "Itaú",
+    10,
+    3
+  ),
+  (
+    "#BBTG2020",
+    "2020-11-07",
+    "PROJECT OWNER",
+    "BTG",
+    10,
+    4
   );
 INSERT INTO vaga_tecnologia (vaga_id, tecnologia_id)
 VALUES (1, 1),
   (1, 3),
   (2, 2),
-  (2, 4);
+  (2, 4),
+  (3, 4),
+  (3, 5);
 INSERT INTO funcionario (
     nome,
     cargo,
