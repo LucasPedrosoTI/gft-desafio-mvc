@@ -5,16 +5,17 @@
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
-  <form class="form-row" action="" method="get" th:object="${filtro}">
-    <div class="col">
-      <div class="form-group">
+  <form
+    class="form-row align-items-center"
+    action=""
+    method="get"
+    th:object="${filtro}"
+  >
+    <div class="col-md-6">
+      <div class="form-group m-0">
         <div class="input-group">
           <div class="input-group-prepend">
-            <span
-              class="input-group-text"
-              id="searchPrepend"
-              style="padding: 0"
-            >
+            <span class="input-group-text p-0" id="searchPrepend">
               <button type="submit" class="btn">
                 <i class="fas fa-search"></i>
               </button>
@@ -36,11 +37,13 @@
     </div>
     <div class="col" th:if="${#lists.size(nroPaginas) > 1}">
       <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-end">
+        <ul
+          class="pagination my-2 m-md-0 justify-content-center justify-content-md-end"
+        >
           <li class="page-item" th:if="${hasPrevious}">
             <a
               class="page-link"
-              th:href="@{/wa/{rotaAtual}(page=0, rotaAtual=${rotaAtual})}"
+              th:href="@{/wa/{rotaAtual}(page=0, size=${param.size}, rotaAtual=${rotaAtual})}"
               aria-label="Primeira"
             >
               <span aria-hidden="true">&laquo;</span>
@@ -52,7 +55,7 @@
             <a
               class="page-link"
               th:classappend="${paginaAtual == nroPagina - 1} ? page-active"
-              th:href="@{/wa/{rotaAtual}(page=${nroPagina - 1}, rotaAtual=${rotaAtual})}"
+              th:href="@{/wa/{rotaAtual}(page=${nroPagina - 1},size=${param.size}, rotaAtual=${rotaAtual})}"
               th:text="${nroPagina}"
             ></a>
           </li>
@@ -63,7 +66,7 @@
           >
             <a
               class="page-link"
-              th:href="@{/wa/{rotaAtual}(page=${#lists.size(nroPaginas) - 1}, rotaAtual=${rotaAtual})}"
+              th:href="@{/wa/{rotaAtual}(page=${#lists.size(nroPaginas) - 1}, size=${param.size}, rotaAtual=${rotaAtual})}"
               aria-label="Última"
             >
               <span aria-hidden="true">&raquo;</span>
@@ -72,6 +75,39 @@
           </li>
         </ul>
       </nav>
+    </div>
+    <div class="col-md-3 ml-3">
+      <div class="row justify-content-center align-items-center">
+        <select
+          class="custom-select col-6 col-md-6"
+          name="pageSize"
+          id="pageSize"
+        >
+          <option th:if="${param.size} == null" value="null">5</option>
+          <option
+            th:if="${param.size} != null and ${#strings.length(param.size) > 0}"
+            value="null"
+            th:text="${param.size}"
+          ></option>
+
+          <option
+            th:if="${!#strings.equals(param.size, '5')} and ${param.size} != null"
+            value="5"
+          >
+            5
+          </option>
+          <option th:if="${!#strings.equals(param.size, '10')}" value="10">
+            10
+          </option>
+          <option th:if="${!#strings.equals(param.size, '15')}" value="15">
+            15
+          </option>
+          <option th:if="${!#strings.equals(param.size, '20')}" value="20">
+            20
+          </option>
+        </select>
+        <label class="my-0 ml-1" for="pageSize">Por página</label>
+      </div>
     </div>
   </form>
 </html>

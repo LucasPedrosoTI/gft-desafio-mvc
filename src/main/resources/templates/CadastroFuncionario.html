@@ -45,7 +45,7 @@
         <label for="cargo">Cargo</label>
         <select
           th:field="*{cargo}"
-          class="form-control"
+          class="custom-select"
           id="cargo"
           th:classappend="${#fields.hasErrors('cargo')} ? is-invalid"
         >
@@ -61,7 +61,7 @@
         <label for="level">Level</label>
         <select
           th:field="*{level}"
-          class="form-control"
+          class="custom-select"
           id="level"
           th:classappend="${#fields.hasErrors('level')} ? is-invalid"
         >
@@ -77,7 +77,7 @@
         <label for="localDeTrabalho">Local De Trabalho</label>
         <select
           th:field="*{localDeTrabalho}"
-          class="form-control"
+          class="custom-select"
           id="localDeTrabalho"
           th:classappend="${#fields.hasErrors('localDeTrabalho')} ? is-invalid"
         >
