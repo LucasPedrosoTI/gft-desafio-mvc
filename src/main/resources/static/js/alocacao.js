@@ -40,7 +40,12 @@ function fromIdToNome(techIds) {
     return "Nenhuma tecnologia cadastrada";
   }
 
-  return techIds.map((id) => tecnologiasList[id - 1].nome).join(", ");
+  return techIds
+    .map(
+      (id) =>
+        tecnologiasList[tecnologiasList.findIndex((tech) => tech.id == id)].nome
+    )
+    .join(", ");
 }
 
 function toggleAlocarIconVisible() {
