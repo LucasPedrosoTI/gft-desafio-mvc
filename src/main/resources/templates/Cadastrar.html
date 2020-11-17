@@ -20,7 +20,7 @@
       method="post"
       th:object="${usuario}"
     >
-      <div th:replace="~{/parts/MensagemErro}"></div>
+      <div th:replace="parts/MensagemErro"></div>
       <input type="hidden" th:field="*{id}" />
 
       <p class="form-group">

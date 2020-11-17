@@ -12,11 +12,11 @@
 
   <body>
     <section layout:fragment="conteudo">
-      <div th:replace="~{/parts/MensagemGeral}"></div>
+      <div th:replace="parts/MensagemGeral"></div>
 
       <h1 class="text-center my-3">Vagas em Aberto</h1>
 
-      <div th:replace="~{/parts/FiltroBusca}"></div>
+      <div th:replace="parts/FiltroBusca"></div>
 
       <table
         class="table table-hover table-striped text-center table-responsive-md"
@@ -119,7 +119,7 @@
         </tbody>
       </table>
 
-      <div th:replace="~{/parts/AdminNavInferior}"></div>
+      <div th:replace="parts/AdminNavInferior"></div>
     </section>
   </body>
 </html>

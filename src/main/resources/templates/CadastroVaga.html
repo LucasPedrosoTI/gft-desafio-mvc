@@ -14,8 +14,8 @@
     <h1 class="text-center my-3">Cadastro de Vaga</h1>
 
     <form action="/wa/vagas/cadastrar" method="POST" th:object="${vaga}">
-      <div th:replace="~{/parts/MensagemGeral}"></div>
-      <div th:replace="~{/parts/MensagemErro}"></div>
+      <div th:replace="parts/MensagemGeral"></div>
+      <div th:replace="parts/MensagemErro"></div>
 
       <input type="hidden" th:field="*{id}" />
 
